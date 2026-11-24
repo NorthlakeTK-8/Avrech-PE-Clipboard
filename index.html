@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Northlake TK-8 Jets PE | Mr. Avrech</title>
+<style>
+  :root {
+    /* Northlake TK-8 Jets Official Palette */
+    --jets-navy: #0a2a52;
+    --jets-blue: #164e87;
+    --jets-sky: #8bc4e6;
+    --jets-sky-light: #e6f4fc;
+    --jets-silver: #6e7b78;
+    --bg: #eef4f8;
+    --card: #ffffff;
+    --text: #0a2a52;
+    --muted: #52606d;
+    --border: #cbd5e1;
+    --green: #16a34a;
+    --red: #dc2626;
+    --amber: #d97706;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); padding-bottom: 85px; }
+  
+  /* Sticky Top Header */
+  header { position: sticky; top: 0; z-index: 50; background: linear-gradient(135deg, var(--jets-navy) 0%, var(--jets-blue) 100%); color: #fff; padding: 10px 14px; border-bottom: 3px solid var(--jets-sky); box-shadow: 0 3px 12px rgba(10,42,82,0.28); }
+  .header-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .brand-wrap { display: flex; align-items: center; gap: 10px; }
+  .logo-badge { width: 46px; height: 46px; border-radius: 50%; background: var(--jets-sky); border: 2px solid #fff; box-shadow: 0 0 0 2px var(--jets-silver); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
+  .logo-badge img { width: 100%; height: 100%; object-fit: cover; }
+  .logo-fallback { font-size: 1.4rem; }
+  .brand h1 { margin: 0; font-size: 1.05rem; letter-spacing: 0.3px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+  .brand p { margin: 2px 0 0; font-size: 0.76rem; color: var(--jets-sky); font-weight: 600; }
+  
+  .timer-box { background: rgba(10, 42, 82, 0.55); border: 1px solid var(--jets-sky); border-radius: 10px; padding: 6px 10px; display: flex; align-items: center; gap: 10px; }
+  .clock-info { text-align: right; font-size: 0.72rem; line-height: 1.3; color: #e2e8f0; }
+  .countdown-pill { background: var(--green); color: #fff; font-weight: 800; padding: 6px 10px; border-radius: 8px; font-size: 0.95rem; text-align: center; min-width: 115px; border: 1px solid rgba(255,255,255,0.25); }
+  .countdown-pill.warning { background: var(--amber); animation: pulse 1.5s infinite; }
+  .countdown-pill.ended { background: var(--jets-silver); }
+  .countdown-label { display: block; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; opacity: 0.95; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.75; } }
+
+  .header-sub { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 6px; border-top: 1px solid rgba(139, 196, 230, 0.28); font-size: 0.75rem; gap: 8px; flex-wrap: wrap; }
+  .sched-toggle { background: rgba(139, 196, 230, 0.2); color: #fff; border: 1px solid var(--jets-sky); border-radius: 6px; padding: 4px 8px; font-size: 0.72rem; font-weight: 700; cursor: pointer; }
+  .quick-links { display: flex; gap: 6px; }
+  .quick-links a { background: var(--jets-sky); color: var(--jets-navy); text-decoration: none; font-weight: 800; font-size: 0.72rem; padding: 4px 9px; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+
+  /* Bottom Navigation */
+  nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: #fff; border-top: 2px solid var(--jets-sky); display: grid; grid-template-columns: repeat(7, 1fr); padding: 4px 0; box-shadow: 0 -2px 10px rgba(10,42,82,0.08); }
+  nav button { background: none; border: none; padding: 6px 2px; font-size: 0.65rem; font-weight: 700; color: var(--jets-silver); display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
+  nav button.active { color: var(--jets-navy); background: var(--jets-sky-light); border-radius: 8px; }
+  nav button span.icon { font-size: 1.15rem; }
+
+  /* Layout & Cards */
+  .container { max-width: 900px; margin: 0 auto; padding: 12px; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+  .card { background: var(--card); border-radius: 12px; padding: 14px; margin-bottom: 12px; border: 1px solid var(--border); border-top: 3px solid var(--jets-navy); box-shadow: 0 1px 4px rgba(10,42,82,0.05); }
+  .card h2 { margin: 0 0 10px; font-size: 1rem; color: var(--jets-navy); display: flex; justify-content: space-between; align-items: center; }
+
+  /* Buttons & Inputs */
+  .btn { border: none; border-radius: 8px; padding: 8px 12px; font-weight: 700; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
+  .btn-primary { background: var(--jets-navy); color: #fff; }
+  .btn-sky { background: var(--jets-sky); color: var(--jets-navy); }
+  .btn-green { background: var(--green); color: #fff; }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-amber { background: var(--amber); color: #fff; }
+  .btn-outline { background: #fff; border: 1px solid var(--jets-silver); color: var(--jets-navy); }
+  .btn-sm { padding: 5px 8px; font-size: 0.72rem; border-radius: 6px; }
+  input, select, textarea { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit; color: var(--text); }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--jets-blue); box-shadow: 0 0 0 2px var(--jets-sky-light); }
+
+  /* Period Selector Grid */
+  .period-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 10px; }
+  .period-card { border: 2px solid var(--border); border-radius: 10px; padding: 12px; text-align: left; background: #fff; cursor: pointer; transition: 0.15s; }
+  .period-card.selected { border-color: var(--jets-navy); background: var(--jets-sky-light); box-shadow: inset 4px 0 0 var(--jets-navy); }
+  .period-card .p-title { font-weight: 800; font-size: 1rem; color: var(--jets-navy); }
+  .period-card .p-meta { font-size: 0.75rem; color: var(--jets-silver); font-weight: 600; margin-top: 3px; }
+
+  /* Student Rows */
+  .student-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); gap: 8px; }
+  .student-row:last-child { border-bottom: none; }
+  .s-info { flex: 1; min-width: 165px; cursor: pointer; }
+  .s-num { display: inline-block; background: var(--jets-navy); color: #fff; font-weight: 800; font-size: 0.72rem; padding: 2px 6px; border-radius: 5px; margin-right: 6px; }
+  .s-name { font-weight: 700; font-size: 0.9rem; color: var(--jets-blue); text-decoration: underline; }
+  .s-badges { font-size: 0.7rem; color: var(--jets-silver); margin-top: 3px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .s-actions { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .score-pill { font-weight: 800; font-size: 0.85rem; padding: 4px 8px; border-radius: 6px; background: #dcfce7; color: #166534; min-width: 54px; text-align: center; }
+  .score-pill.low { background: #fee2e2; color: #991b1b; }
+
+  /* Big Lap Timer */
+  .stopwatch-display { font-size: 3.2rem; font-weight: 900; text-align: center; font-variant-numeric: tabular-nums; color: var(--jets-navy); padding: 12px 0; background: var(--jets-sky-light); border-radius: 12px; border: 2px solid var(--jets-sky); margin-bottom: 10px; }
+  .timer-controls { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .timer-controls .btn { padding: 14px; font-size: 1rem; }
+  .runner-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+  .runner-btn { background: #fff; border: 2px solid var(--border); border-radius: 10px; padding: 10px; text-align: left; cursor: pointer; }
+  .runner-btn:active { background: var(--jets-sky-light); border-color: var(--jets-navy); }
+  .runner-btn .r-name { font-weight: 700; font-size: 0.82rem; color: var(--jets-navy); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .runner-btn .r-laps { font-size: 0.75rem; color: var(--green); font-weight: 700; margin-top: 4px; display: block; }
+
+  /* Modals */
+  .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(10,42,82,0.65); z-index: 100; align-items: center; justify-content: center; padding: 14px; }
+  .modal-backdrop.open { display: flex; }
+  .modal { background: #fff; border-radius: 14px; border-top: 4px solid var(--jets-navy); width: 100%; max-width: 480px; max-height: 88vh; overflow-y: auto; padding: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+  .modal h3 { margin: 0 0 12px; color: var(--jets-navy); }
+  .form-group { margin-bottom: 10px; }
+  .form-group label { display: block; font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; color: var(--jets-silver); }
+  .modal-footer { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+
+  /* RNG Big Number */
+  .rng-box { text-align: center; padding: 20px; background: var(--jets-sky-light); border-radius: 12px; border: 2px dashed var(--jets-navy); }
+  .rng-number { font-size: 3.5rem; font-weight: 900; color: var(--jets-navy); line-height: 1; }
+  .rng-student { font-size: 1.1rem; font-weight: 700; color: var(--jets-blue); margin-top: 6px; }
+
+  /* Fitness Table */
+  .fitness-row { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 6px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+  .fitness-row input { padding: 5px; text-align: center; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="brand-wrap">
+      <div class="logo-badge" title="Northlake TK-8 Jets">
+        <img id="schoolLogoImg" src="jets-logo.png" alt="Jets Logo" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';">
