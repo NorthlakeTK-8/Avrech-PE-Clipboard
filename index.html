@@ -234,12 +234,45 @@ const SCHEDULES = {
   REGULAR: [{ p:"2",startH:9,startM:7,endH:10,endM:5 },{ p:"3",startH:10,startM:9,endH:11,endM:7 },{ p:"4",startH:11,startM:11,endH:12,endM:9 },{ p:"5",startH:12,startM:48,endH:13,endM:45 },{ p:"6",startH:13,startM:49,endH:14,endM:42 }],
   WED: [{ p:"2",startH:8,startM:51,endH:9,endM:38 },{ p:"3",startH:9,startM:42,endH:10,endM:29 },{ p:"4",startH:11,startM:8,endH:11,endM:53 },{ p:"5",startH:11,startM:57,endH:12,endM:42 }]
 };
-function toggleScheduleMode() { const o = ["AUTO","REGULAR","WED"]; state.scheduleOverride = o.at((o.indexOf(state.scheduleOverride)+1)%3); saveState(); updateClock(); }
+function isWednesdaySchedule() {
+  return state.scheduleOverride === "WED" || (state.scheduleOverride === "AUTO" && new Date().getDay() === 3);
+}
+
+function formatSlotTime(slot) {
+  function fmt(h, m) {
+    const suffix = h >= 12 ? "PM" : "AM";
+    const hr = h > 12 ? h - 12 : (h === 0 ? 12 : h);
+    return hr + ":" + String(m).padStart(2, "0") + suffix;
+  }
+  return fmt(slot.startH, slot.startM) + "-" + fmt(slot.endH, slot.endM);
+}
+
+function isWednesdaySchedule() {
+  return state.scheduleOverride === "WED" || (state.scheduleOverride === "AUTO" && new Date().getDay() === 3);
+}
+
+function formatSlotTime(slot) {
+  function fmt(h, m) {
+    const suffix = h >= 12 ? "PM" : "AM";
+    const hr = h > 12 ? h - 12 : (h === 0 ? 12 : h);
+    return hr + ":" + String(m).padStart(2, "0") + suffix;
+  }
+  return fmt(slot.startH, slot.startM) + "-" + fmt(slot.endH, slot.endM);
+}
+
+function toggleScheduleMode() {
+  const o = ["AUTO", "REGULAR", "WED"];
+  state.scheduleOverride = o.at((o.indexOf(state.scheduleOverride) + 1) % 3);
+  saveState();
+  updateClock();
+  renderHome();
+}
+
 function updateClock() {
   const now = new Date();
   document.getElementById("liveDate").textContent = now.toLocaleDateString("en-US", { weekday:"short", month:"short", day:"numeric", year:"numeric" });
   document.getElementById("liveClock").textContent = now.toLocaleTimeString("en-US", { hour:"numeric", minute:"2-digit", second:"2-digit" });
-  const isWed = state.scheduleOverride === "WED" || (state.scheduleOverride === "AUTO" && now.getDay() === 3);
+  const isWed = isWednesdaySchedule();
   document.getElementById("schedToggleBtn").textContent = "Schedule: " + (state.scheduleOverride === "AUTO" ? (isWed ? "Auto (Wed)" : "Auto (Reg)") : state.scheduleOverride);
   const sched = isWed ? SCHEDULES.WED : SCHEDULES.REGULAR;
   const nowSec = now.getHours()*3600 + now.getMinutes()*60 + now.getSeconds();
@@ -261,10 +294,17 @@ function getStudentWeeklyScore(p, sid) { return Math.max(0, 50 - getStudentWeekR
 
 function renderHome() {
   const pObj = state.rosters[state.activePeriod];
+  const isWed = isWednesdaySchedule();
+  const activeSched = isWed ? SCHEDULES.WED : SCHEDULES.REGULAR;
+
   document.getElementById("activePeriodLabel").textContent = pObj.name + " (" + pObj.course + ")";
   document.getElementById("periodGrid").innerHTML = Object.keys(state.rosters).map(function(p) {
     const r = state.rosters[p];
-    return '<button class="period-card ' + (p===state.activePeriod?'selected':'') + '" onclick="selectPeriod(\'' + p + '\')"><div class="p-title">' + r.name + ' • ' + r.course + '</div><div class="p-meta">' + r.students.length + ' Students • ' + r.time + '</div></button>';
+    const slot = activeSched.find(function(s) { return s.p === p; });
+    const displayTime = slot ? formatSlotTime(slot) : (isWed ? "No Class (Wed)" : r.time);
+    const dimStyle = (!slot && isWed) ? ' style="opacity:0.55;"' : '';
+
+    return '<button class="period-card ' + (p===state.activePeriod?'selected':'') + '"' + dimStyle + ' onclick="selectPeriod(\'' + p + '\')"><div class="p-title">' + r.name + ' • ' + r.course + '</div><div class="p-meta">' + r.students.length + ' Students • ' + displayTime + '</div></button>';
   }).join("");
 }
 
