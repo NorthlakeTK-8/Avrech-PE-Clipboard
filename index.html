@@ -6,23 +6,13 @@
 <title>Northlake TK-8 Jets PE | Mr. Avrech</title>
 <style>
   :root {
-    --jets-navy: #0a2a52;
-    --jets-blue: #164e87;
-    --jets-sky: #8bc4e6;
-    --jets-sky-light: #e6f4fc;
-    --jets-silver: #6e7b78;
-    --bg: #eef4f8;
-    --card: #ffffff;
-    --text: #0a2a52;
-    --muted: #52606d;
-    --border: #cbd5e1;
-    --green: #16a34a;
-    --red: #dc2626;
-    --amber: #d97706;
+    --jets-navy: #0a2a52; --jets-blue: #164e87; --jets-sky: #8bc4e6;
+    --jets-sky-light: #e6f4fc; --jets-silver: #6e7b78; --bg: #eef4f8;
+    --card: #ffffff; --text: #0a2a52; --muted: #52606d; --border: #cbd5e1;
+    --green: #16a34a; --red: #dc2626; --amber: #d97706;
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); padding-bottom: 85px; }
-  
   header { position: sticky; top: 0; z-index: 50; background: linear-gradient(135deg, var(--jets-navy) 0%, var(--jets-blue) 100%); color: #fff; padding: 10px 14px; border-bottom: 3px solid var(--jets-sky); box-shadow: 0 3px 12px rgba(10,42,82,0.28); }
   .header-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
   .brand-wrap { display: flex; align-items: center; gap: 10px; }
@@ -31,7 +21,6 @@
   .logo-fallback { font-size: 1.4rem; }
   .brand h1 { margin: 0; font-size: 1.05rem; letter-spacing: 0.3px; }
   .brand p { margin: 2px 0 0; font-size: 0.76rem; color: var(--jets-sky); font-weight: 600; }
-  
   .timer-box { background: rgba(10, 42, 82, 0.55); border: 1px solid var(--jets-sky); border-radius: 10px; padding: 6px 10px; display: flex; align-items: center; gap: 10px; }
   .clock-info { text-align: right; font-size: 0.72rem; line-height: 1.3; color: #e2e8f0; }
   .countdown-pill { background: var(--green); color: #fff; font-weight: 800; padding: 6px 10px; border-radius: 8px; font-size: 0.95rem; text-align: center; min-width: 115px; border: 1px solid rgba(255,255,255,0.25); }
@@ -39,23 +28,19 @@
   .countdown-pill.ended { background: var(--jets-silver); }
   .countdown-label { display: block; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; opacity: 0.95; }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.75; } }
-
   .header-sub { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 6px; border-top: 1px solid rgba(139, 196, 230, 0.28); font-size: 0.75rem; gap: 8px; flex-wrap: wrap; }
   .sched-toggle { background: rgba(139, 196, 230, 0.2); color: #fff; border: 1px solid var(--jets-sky); border-radius: 6px; padding: 4px 8px; font-size: 0.72rem; font-weight: 700; cursor: pointer; }
   .quick-links { display: flex; gap: 6px; }
   .quick-links a { background: var(--jets-sky); color: var(--jets-navy); text-decoration: none; font-weight: 800; font-size: 0.72rem; padding: 4px 9px; border-radius: 6px; }
-
   nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: #fff; border-top: 2px solid var(--jets-sky); display: grid; grid-template-columns: repeat(7, 1fr); padding: 4px 0; box-shadow: 0 -2px 10px rgba(10,42,82,0.08); }
   nav button { background: none; border: none; padding: 6px 2px; font-size: 0.65rem; font-weight: 700; color: var(--jets-silver); display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
   nav button.active { color: var(--jets-navy); background: var(--jets-sky-light); border-radius: 8px; }
   nav button span.icon { font-size: 1.15rem; }
-
   .container { max-width: 900px; margin: 0 auto; padding: 12px; }
   .tab-pane { display: none; }
   .tab-pane.active { display: block; }
   .card { background: var(--card); border-radius: 12px; padding: 14px; margin-bottom: 12px; border: 1px solid var(--border); border-top: 3px solid var(--jets-navy); box-shadow: 0 1px 4px rgba(10,42,82,0.05); }
   .card h2 { margin: 0 0 10px; font-size: 1rem; color: var(--jets-navy); display: flex; justify-content: space-between; align-items: center; }
-
   .btn { border: none; border-radius: 8px; padding: 8px 12px; font-weight: 700; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
   .btn-primary { background: var(--jets-navy); color: #fff; }
   .btn-sky { background: var(--jets-sky); color: var(--jets-navy); }
@@ -65,13 +50,11 @@
   .btn-outline { background: #fff; border: 1px solid var(--jets-silver); color: var(--jets-navy); }
   .btn-sm { padding: 5px 8px; font-size: 0.72rem; border-radius: 6px; }
   input, select, textarea { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit; color: var(--text); }
-
   .period-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 10px; }
   .period-card { border: 2px solid var(--border); border-radius: 10px; padding: 12px; text-align: left; background: #fff; cursor: pointer; }
   .period-card.selected { border-color: var(--jets-navy); background: var(--jets-sky-light); box-shadow: inset 4px 0 0 var(--jets-navy); }
   .period-card .p-title { font-weight: 800; font-size: 1rem; color: var(--jets-navy); }
   .period-card .p-meta { font-size: 0.75rem; color: var(--jets-silver); font-weight: 600; margin-top: 3px; }
-
   .student-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); gap: 8px; }
   .student-row:last-child { border-bottom: none; }
   .s-info { flex: 1; min-width: 165px; cursor: pointer; }
@@ -81,7 +64,6 @@
   .s-actions { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
   .score-pill { font-weight: 800; font-size: 0.85rem; padding: 4px 8px; border-radius: 6px; background: #dcfce7; color: #166534; min-width: 54px; text-align: center; }
   .score-pill.low { background: #fee2e2; color: #991b1b; }
-
   .stopwatch-display { font-size: 3.2rem; font-weight: 900; text-align: center; font-variant-numeric: tabular-nums; color: var(--jets-navy); padding: 12px 0; background: var(--jets-sky-light); border-radius: 12px; border: 2px solid var(--jets-sky); margin-bottom: 10px; }
   .timer-controls { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
   .timer-controls .btn { padding: 14px; font-size: 1rem; }
@@ -90,7 +72,6 @@
   .runner-btn:active { background: var(--jets-sky-light); border-color: var(--jets-navy); }
   .runner-btn .r-name { font-weight: 700; font-size: 0.82rem; color: var(--jets-navy); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .runner-btn .r-laps { font-size: 0.75rem; color: var(--green); font-weight: 700; margin-top: 4px; display: block; }
-
   .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(10,42,82,0.65); z-index: 100; align-items: center; justify-content: center; padding: 14px; }
   .modal-backdrop.open { display: flex; }
   .modal { background: #fff; border-radius: 14px; border-top: 4px solid var(--jets-navy); width: 100%; max-width: 480px; max-height: 88vh; overflow-y: auto; padding: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
@@ -98,946 +79,314 @@
   .form-group { margin-bottom: 10px; }
   .form-group label { display: block; font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; color: var(--jets-silver); }
   .modal-footer { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
-
   .rng-box { text-align: center; padding: 20px; background: var(--jets-sky-light); border-radius: 12px; border: 2px dashed var(--jets-navy); }
   .rng-number { font-size: 3.5rem; font-weight: 900; color: var(--jets-navy); line-height: 1; }
   .rng-student { font-size: 1.1rem; font-weight: 700; color: var(--jets-blue); margin-top: 6px; }
-
   .fitness-row { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 6px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
   .fitness-row input { padding: 5px; text-align: center; font-size: 0.8rem; }
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-top">
     <div class="brand-wrap">
-      <div class="logo-badge" title="Northlake TK-8 Jets">
-        <img id="schoolLogoImg" src="jets-logo.png" alt="Jets Logo" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';">
-        <span id="logoFallback" class="logo-fallback" style="display:none;">✈️</span>
-      </div>
-      <div class="brand">
-        <h1>Northlake TK-8 Jets • Physical Education</h1>
-        <p>Mr. Avrech • <span id="activePeriodLabel">Period 2 (PE 8)</span></p>
-      </div>
+      <div class="logo-badge"><img id="schoolLogoImg" src="jets-logo.png" alt="Jets Logo" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block';"><span id="logoFallback" class="logo-fallback" style="display:none;">✈️</span></div>
+      <div class="brand"><h1>Northlake TK-8 Jets • Physical Education</h1><p>Mr. Avrech • <span id="activePeriodLabel">Period 2 (PE 8)</span></p></div>
     </div>
     <div class="timer-box">
-      <div class="clock-info">
-        <div id="liveDate">Loading date...</div>
-        <div id="liveClock" style="font-weight:800;font-size:0.88rem;color:#fff;">--:--:--</div>
+      <div class="clock-info"><div id="liveDate">Loading...</div><div id="liveClock" style="font-weight:800;font-size:0.88rem;color:#fff;">--:--:--</div></div>
+      <div id="countdownPill" class="countdown-pill"><span class="countdown-label" id="countdownStatus">TIME LEFT</span><span id="countdownText">--:--</span></div>
+    </div>
+  </div>
+  <div class="header-sub">
+    <div><button class="sched-toggle" id="schedToggleBtn" onclick="toggleScheduleMode()">Schedule: Auto</button><span id="backupStatus" style="margin-left:6px;color:#8bc4e6;font-weight:600;">✓ Daily Backup Ready</span></div>
+    <div class="quick-links"><a href="https://natomasunified.org" target="_blank">Aeries</a><a href="https://minga.io" target="_blank">Minga</a><a href="https://google.com" target="_blank">Classroom</a></div>
+  </div>
+</header>
+
+<div class="container">
+  <div id="tab-home" class="tab-pane active">
+    <div class="card"><h2>Select Class Period</h2><div class="period-grid" id="periodGrid"></div></div>
+    <div class="card">
+      <h2>Weekly & Daily Backup Protection</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+        <button class="btn btn-primary btn-sm" onclick="exportFullBackup()">⬇ Download Backup (.json)</button>
+        <label class="btn btn-outline btn-sm" style="cursor:pointer;">⬆ Restore Backup<input type="file" accept=".json" style="display:none;" onchange="importFullBackup(event)"></label>
+        <button class="btn btn-amber btn-sm" onclick="openArchiveWeekModal()">📦 Archive Week</button>
       </div>
-      
-TIME LEFT
---:--
-
-
-
-
-
-Schedule: Auto
-✓ Daily Backup Ready
-
-
-Aeries
-Minga
-Classroom
-
-
-Select Class Period
-
-Weekly & Daily Backup Protection
-Your data automatically backs up inside this device every day (keeping the last 7 school days). Download a backup file to Google Drive for extra safety.
-⬇ Download Backup File (.json)
-⬆ Restore Backup File
-📦 Close Out & Archive Week
-
-Restore From Automatic Daily Snapshot (Last 7 Days):
-Restore
-
-
-School Logo & Aeries Roster CSV
-
-Upload Jets Logo Image:
-Update Roster (Aeries CSV):
-Period 2 • Weekly Points (/50)
-
-📋 Copy Scores
-⬇ Aeries CSV
-
-
-
-
-
-Multi-Runner Mile & PACER Timer
-
-Mile Run (PR Check)
-PACER Laps (PR Check)
-
-
-00:00.0
-
-▶ Start
-↺ Reset
-💾 Save PRs
-Tap a student below each time they complete a lap:
-Random Student Number Picker
-
---
-Tap below to pick a present student
-🎲 Pick Random Student
-
-Smart Team Generator (Present Students Only)
-
-
-2 Teams
-3 Teams
-4 Teams
-6 Teams
-8 Teams
-
-⚡ Build Teams
-
-
-
-Fitness Testing Tracker
-⬇ Export CSV
-
-
-Student
-Push-Ups
-Curl-Ups
-Trunk Lift
-Sit & Reach
-
-
-
-Assignments & Auto-Rubric
-+ New Assignment
-
-
-
-📋 Copy Scores
-
-
-
-Locker Room Combinations
-
-Boys
-Girls
-
-
-
-
-
-
-Add
-
-
-
-Weekly & Trimester Archive Search
-
-
-All Trimesters
-Trimester 1
-Trimester 2
-Trimester 3
-
-
-
-
-
-
-✈️Home
-✅Points
-⏱️Timer
-🎲Teams
-💪Fitness
-📝Rubrics
-🔐Lockers
-Deduct Points
-Points to Deduct (from 50/wk):
--2 Points
--5 Points
--10 Points (Full Day)
--1 Point
-
-
-Reason:
-Non Suit
-Behavior
-Tardy
-Non-Participation
-Other
-
-
-Notes (Why):
-Cancel
-Save Deduction
-
-
-Minga Follow-Up Note
-Reason / Notes for Minga:
-Cancel
-Save Minga Flag
-
-
-Student Weekly Synopsis
-
-
-Close
-
-
-Archive Current Week & Reset to 50 Pts
-Week Label (e.g., Week 14 - Nov 24):
-Trimester:
-Trimester 1
-Trimester 2
-Trimester 3
-
-This saves all current scores, deduction notes, and Minga logs into your searchable Archive and resets everyone back to 50/50 for the new week.
-Cancel
-Archive & Reset Week
-
-
-Create Rubric Assignment
-Assignment Name:
-Max Points:
-Cancel
-Create
-
-
+      <div class="form-group"><label>Restore From Automatic Daily Snapshot (Last 7 Days):</label><div style="display:flex;gap:6px;"><select id="snapshotSelect"></select><button class="btn btn-outline btn-sm" onclick="restoreSnapshot()">Restore</button></div></div>
+    </div>
+    <div class="card">
+      <h2>School Logo & Aeries Roster CSV</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div><label style="font-size:0.75rem;font-weight:700;color:var(--jets-silver);display:block;margin-bottom:4px;">Upload Jets Logo:</label><input type="file" accept="image/*" onchange="handleLogoUpload(event)"></div>
+        <div><label style="font-size:0.75rem;font-weight:700;color:var(--jets-silver);display:block;margin-bottom:4px;">Update Roster (Aeries CSV):</label><input type="file" accept=".csv" onchange="handleAeriesCSV(event)"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-points" class="tab-pane">
+    <div class="card">
+      <h2><span id="pointsHeaderTitle">Period 2 • Weekly Points (/50)</span><div style="display:flex;gap:6px;"><button class="btn btn-sky btn-sm" onclick="copyScoresForAeries()">📋 Copy Scores</button><button class="btn btn-primary btn-sm" onclick="exportAeriesScoresCSV()">⬇ Aeries CSV</button></div></h2>
+      <input type="text" id="studentSearch" placeholder="Search student name or #..." oninput="renderPointsList()" style="margin-bottom:8px;">
+      <div id="pointsStudentList"></div>
+    </div>
+  </div>
+
+  <div id="tab-timer" class="tab-pane">
+    <div class="card">
+      <h2><span>Multi-Runner Mile & PACER Timer</span><select id="timerModeSelect" style="width:auto;padding:4px 8px;font-size:0.78rem;"><option value="mile">Mile Run (PR)</option><option value="pacer">PACER Laps (PR)</option></select></h2>
+      <div class="stopwatch-display" id="stopwatchDisplay">00:00.0</div>
+      <div class="timer-controls"><button class="btn btn-green" id="swStartBtn" onclick="toggleStopwatch()">▶ Start</button><button class="btn btn-amber" onclick="resetStopwatch()">↺ Reset</button><button class="btn btn-primary" onclick="saveTimerPRs()">💾 Save PRs</button></div>
+      <div class="runner-grid" id="runnerGrid"></div>
+    </div>
+  </div>
+
+  <div id="tab-teams" class="tab-pane">
+    <div class="card"><h2>Random Student Number Picker</h2><div class="rng-box"><div class="rng-number" id="rngNumber">--</div><div class="rng-student" id="rngStudent">Tap below to pick a present student</div><button class="btn btn-primary" style="margin-top:12px;" onclick="pickRandomStudent()">🎲 Pick Random Student</button></div></div>
+    <div class="card"><h2>Smart Team Generator (Present Only)</h2><div style="display:flex;gap:8px;margin-bottom:10px;"><select id="numTeamsSelect"><option value="2">2 Teams</option><option value="3">3 Teams</option><option value="4" selected>4 Teams</option><option value="6">6 Teams</option><option value="8">8 Teams</option></select><button class="btn btn-green" onclick="generateTeams()">⚡ Build Teams</button></div><div id="teamsOutput"></div></div>
+  </div>
+
+  <div id="tab-fitness" class="tab-pane">
+    <div class="card">
+      <h2><span>Fitness Testing Tracker</span><button class="btn btn-primary btn-sm" onclick="exportFitnessCSV()">⬇ Export CSV</button></h2>
+      <div class="fitness-row" style="font-weight:800;color:var(--jets-navy);border-bottom:2px solid var(--jets-navy);"><div>Student</div><div style="text-align:center;">Push-Ups</div><div style="text-align:center;">Curl-Ups</div><div style="text-align:center;">Trunk Lift</div><div style="text-align:center;">Sit & Reach</div></div>
+      <div id="fitnessList"></div>
+    </div>
+  </div>
+
+  <div id="tab-rubrics" class="tab-pane">
+    <div class="card">
+      <h2><span>Assignments & Auto-Rubric</span><button class="btn btn-primary btn-sm" onclick="openNewAssignmentModal()">+ New Assignment</button></h2>
+      <div style="display:flex;gap:8px;margin-bottom:10px;"><select id="assignmentSelect" onchange="renderRubricGrading()"></select><button class="btn btn-sky btn-sm" onclick="copyRubricScores()">📋 Copy Scores</button></div>
+      <div id="rubricGradingList"></div>
+    </div>
+  </div>
+
+  <div id="tab-lockers" class="tab-pane">
+    <div class="card">
+      <h2><span>Locker Room Combinations</span><div style="display:flex;gap:4px;"><button class="btn btn-primary btn-sm" id="btnBoysLocker" onclick="switchLockerGender('Boys')">Boys</button><button class="btn btn-outline btn-sm" id="btnGirlsLocker" onclick="switchLockerGender('Girls')">Girls</button></div></h2>
+      <div style="display:grid;grid-template-columns:80px 1fr 110px auto;gap:6px;margin-bottom:10px;"><input type="text" id="newLockerNum" placeholder="Locker #"><input type="text" id="newLockerStudent" placeholder="Student Name"><input type="text" id="newLockerCombo" placeholder="Combo"><button class="btn btn-green btn-sm" onclick="addLocker()">Add</button></div>
+      <input type="text" id="lockerSearch" placeholder="Search locker #, student, or combo..." oninput="renderLockers()" style="margin-bottom:8px;">
+      <div id="lockerList"></div>
+    </div>
+    <div class="card">
+      <h2>Weekly & Trimester Archive Search</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;"><select id="archiveTriFilter" onchange="renderArchive()"><option value="ALL">All Trimesters</option><option value="T1">Trimester 1</option><option value="T2">Trimester 2</option><option value="T3">Trimester 3</option></select><input type="text" id="archiveSearch" placeholder="Filter student, week, date..." oninput="renderArchive()"></div>
+      <div id="archiveList"></div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <button class="active" onclick="switchTab('home', this)"><span class="icon">✈️</span>Home</button>
+  <button onclick="switchTab('points', this)"><span class="icon">✅</span>Points</button>
+  <button onclick="switchTab('timer', this)"><span class="icon">⏱️</span>Timer</button>
+  <button onclick="switchTab('teams', this)"><span class="icon">🎲</span>Teams</button>
+  <button onclick="switchTab('fitness', this)"><span class="icon">💪</span>Fitness</button>
+  <button onclick="switchTab('rubrics', this)"><span class="icon">📝</span>Rubrics</button>
+  <button onclick="switchTab('lockers', this)"><span class="icon">🔐</span>Lockers</button>
+</nav>
+
+<div class="modal-backdrop" id="deductModal"><div class="modal"><h3 id="deductModalTitle">Deduct Points</h3><div class="form-group"><label>Points to Deduct:</label><select id="deductAmount"><option value="2">-2 Pts</option><option value="5" selected>-5 Pts</option><option value="10">-10 Pts (Full Day)</option><option value="1">-1 Pt</option></select></div><div class="form-group"><label>Reason:</label><select id="deductReason"><option value="Non Suit">Non Suit</option><option value="Behavior">Behavior</option><option value="Tardy">Tardy</option><option value="Non-Participation">Non-Participation</option><option value="Other">Other</option></select></div><div class="form-group"><label>Notes:</label><textarea id="deductNotes" rows="3"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('deductModal')">Cancel</button><button class="btn btn-red" onclick="submitDeduction()">Save</button></div></div></div>
+<div class="modal-backdrop" id="mingaModal"><div class="modal"><h3 id="mingaModalTitle">Minga Note</h3><div class="form-group"><label>Notes:</label><textarea id="mingaNotes" rows="3"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('mingaModal')">Cancel</button><button class="btn btn-primary" onclick="submitMinga()">Save</button></div></div></div>
+```html
+<script>
 const DEFAULT_ROSTERS = {
-"2": {
-name: "Period 2", course: "PE 8", time: "9:07AM-10:05AM",
-students: [
-{num:"01",id:"980121804",name:"Cannon, E'Laayah D",gr:"8"},{num:"02",id:"980116259",name:"Chacon, Angel I",gr:"8"},
-{num:"03",id:"980084524",name:"De Los Santos, Lily S",gr:"8"},{num:"04",id:"980124591",name:"Entriken, Dean O",gr:"8"},
-{num:"05",id:"980108115",name:"Escorcia Jimenez, Salma S",gr:"8"},{num:"06",id:"980120791",name:"Hajdari, Ejahani M",gr:"8"},
-{num:"07",id:"980127578",name:"Hemmings, Katana L",gr:"8"},{num:"08",id:"980079411",name:"Hernandez, Elena",gr:"8"},
-{num:"09",id:"980100984",name:"Hoang, Dylan T",gr:"8"},{num:"10",id:"980083466",name:"Jacinto, Sofia M",gr:"8"},
-{num:"11",id:"980120027",name:"Kloes, Isabella R",gr:"8"},{num:"12",id:"980126951",name:"Kundawala, Taha",gr:"8"},
-{num:"13",id:"980072291",name:"Lakkham, Jrayden R",gr:"8"},{num:"14",id:"980126909",name:"Lao, Oliver",gr:"8"},
-{num:"15",id:"980078697",name:"Malloy, Kenneth K",gr:"8"},{num:"16",id:"980075313",name:"Martin, Josiah",gr:"8"},
-{num:"17",id:"980085313",name:"McZeek Adger, Amari M",gr:"8"},{num:"18",id:"980076645",name:"Mier, Oscar N",gr:"8"},
-{num:"19",id:"980090572",name:"Noel, Colter R",gr:"8"},{num:"20",id:"980069911",name:"Pruitt, Isaiah L",gr:"8"},
-{num:"21",id:"980075284",name:"Rodriguez Meraz, Sarah S",gr:"8"},{num:"22",id:"980121801",name:"Singh, Abhay Partap",gr:"8"},
-{num:"23",id:"980130016",name:"Singh, Ekamjot",gr:"8"},{num:"24",id:"980101688",name:"Snider, Haziah L",gr:"8"},
-{num:"25",id:"980077720",name:"Staklis, Katherine E",gr:"8"},{num:"26",id:"980126915",name:"Thao, Sheldon K",gr:"8"},
-{num:"27",id:"980130914",name:"Umpierre, Christopher A",gr:"8"},{num:"28",id:"980083935",name:"Vi, Saffonie L",gr:"8"},
-{num:"29",id:"980121850",name:"Waahedi, Amir A",gr:"8"},{num:"30",id:"980127689",name:"Washington, Melvin",gr:"8"},
-{num:"31",id:"980119577",name:"Wong, Candice Z",gr:"8"},{num:"32",id:"980086386",name:"Yang, Gabriel C",gr:"8"}
-]
-},
-"3": {
-name: "Period 3", course: "PE 7", time: "10:09AM-11:07AM",
-students: [
-{num:"01",id:"980132223",name:"Adele, Ademide W",gr:"7"},{num:"02",id:"980127570",name:"Anwari, Mustafa K",gr:"7"},
-{num:"03",id:"980121582",name:"Baeza, Maria E",gr:"7"},{num:"04",id:"980119459",name:"Bhatti, Mehtab S",gr:"7"},
-{num:"05",id:"980081684",name:"Casey Hollinger, Kairo R",gr:"7"},{num:"06",id:"980089724",name:"Chaudhry, Eiliyah A",gr:"7"},
-{num:"07",id:"980090151",name:"Cole, Emiyah N",gr:"7"},{num:"08",id:"980098265",name:"Coleman, Donovan J",gr:"7"},
-{num:"09",id:"980131526",name:"Devlin, Hayden J",gr:"7"},{num:"10",id:"980094507",name:"Ford, Marcus K",gr:"7"},
-{num:"11",id:"980091657",name:"Hong, Ally",gr:"7"},{num:"12",id:"980131377",name:"Isidro, Jacob Magnus",gr:"7"},
-{num:"13",id:"980119317",name:"Jijesh, Ardra",gr:"7"},{num:"14",id:"980124561",name:"Kaur, Arpan",gr:"7"},
-{num:"15",id:"980123519",name:"Kaur, Sahajpreet",gr:"7"},{num:"16",id:"980128606",name:"Langston, Elijah B",gr:"7"},
-{num:"17",id:"980107683",name:"Licarte, Macey Dara G",gr:"7"},{num:"18",id:"980090117",name:"Mangat, Manraj S",gr:"7"},
-{num:"19",id:"980126927",name:"May, Ahmiya D",gr:"7"},{num:"20",id:"980120279",name:"Mistry, Tvesha S",gr:"7"},
-{num:"21",id:"980130064",name:"Mondragon, Michael F",gr:"7"},{num:"22",id:"980090622",name:"Nguyen, Max D",gr:"7"},
-{num:"23",id:"980132829",name:"Ochoa Mendoza, Maite",gr:"7"},{num:"24",id:"980084795",name:"Sanchez, Emily V",gr:"7"},
-{num:"25",id:"980123522",name:"Singh, Abhijot",gr:"7"},{num:"26",id:"980123988",name:"Stevenson, Paris A",gr:"7"},
-{num:"27",id:"980121796",name:"Tandel, Advay K",gr:"7"},{num:"28",id:"980123670",name:"Torres Sauceda, Farah",gr:"7"},
-{num:"29",id:"980133417",name:"Vasisht, Aarav",gr:"7"},{num:"30",id:"980109819",name:"Warren, Leia A",gr:"7"}
-]
-},
-"4": {
-name: "Period 4", course: "PE 8", time: "11:11AM-12:09PM",
-students: [
-{num:"01",id:"980084003",name:"Campbell, Rayaa",gr:"8"},{num:"02",id:"980123581",name:"Cheema, Eakam",gr:"8"},
-{num:"03",id:"980123950",name:"Correa, Aliyah J",gr:"8"},{num:"04",id:"980130633",name:"Doty, Sophia F",gr:"8"},
-{num:"05",id:"980083552",name:"Dunn, Samuel C",gr:"8"},{num:"06",id:"980080125",name:"Elbert, Tamiya D",gr:"8"},
-{num:"07",id:"980113466",name:"Gopi, Aadharsh",gr:"8"},{num:"08",id:"980121927",name:"Hinse, Isaiah E",gr:"8"},
-{num:"09",id:"980123722",name:"Kaur, Ekam Jot",gr:"8"},{num:"10",id:"980107806",name:"Landayan, Bradley M",gr:"8"},
-{num:"11",id:"980126024",name:"Latu, Aulani",gr:"8"},{num:"12",id:"980098934",name:"Magana Garcia, Galilea",gr:"8"},
-{num:"13",id:"980134444",name:"Mangat, Manveer S",gr:"8"},{num:"14",id:"980075312",name:"Martin, Jeremiah",gr:"8"},
-{num:"15",id:"980124295",name:"McFadden, Caleb D",gr:"8"},{num:"16",id:"980084618",name:"Moua, Ethan T",gr:"8"},
-{num:"17",id:"980121531",name:"Robinson, Jaylen A",gr:"8"},{num:"18",id:"980134653",name:"Safi, Ahmad S",gr:"8"},
-{num:"19",id:"980112837",name:"Saqeb, Mohammad Usman",gr:"8"},{num:"20",id:"980128468",name:"Sepulona, Darlene F",gr:"8"},
-{num:"21",id:"980134446",name:"Singh, Sahib",gr:"8"},{num:"22",id:"980128698",name:"Smith, Coby D",gr:"8"},
-{num:"23",id:"980125440",name:"Solonenko, Emiliia",gr:"8"},{num:"24",id:"980115191",name:"Taylor-Jones, Marlo K",gr:"8"},
-{num:"25",id:"980114717",name:"Tiwari, Arjun",gr:"8"},{num:"26",id:"980121844",name:"Walker, Adalyn R",gr:"8"},
-{num:"27",id:"980083104",name:"Wolford, Caleb A",gr:"8"},{num:"28",id:"980128461",name:"Wood, Angelique S",gr:"8"},
-{num:"29",id:"980083999",name:"Zaplava, Sophia",gr:"8"}
-]
-},
-"5": {
-name: "Period 5", course: "PE 7", time: "12:48PM-1:45PM",
-students: [
-{num:"01",id:"980133424",name:"Arora, Armaan",gr:"7"},{num:"02",id:"980132804",name:"Bankston, Londyn L",gr:"7"},
-{num:"03",id:"980092363",name:"Barton, Leilani N",gr:"7"},{num:"04",id:"980120943",name:"Bhullar, Lovepreet S",gr:"7"},
-{num:"05",id:"980078701",name:"Briggs Turk, Kahliya",gr:"7"},{num:"06",id:"980080079",name:"Cox, Isabelle K",gr:"7"},
-{num:"07",id:"980109191",name:"Elochukwu, Kenechukwu S",gr:"7"},{num:"08",id:"980121706",name:"Goraya, Kirpa K",gr:"7"},
-{num:"09",id:"980134447",name:"Jeanjaquet, David Luke",gr:"7"},{num:"10",id:"980120660",name:"Kaur, Gunngeet",gr:"7"},
-{num:"11",id:"980130774",name:"Kaur, Seerat",gr:"7"},{num:"12",id:"980084015",name:"Knieriem, Knox R",gr:"7"},
-{num:"13",id:"980093514",name:"Larios Magallanes, Eliana A",gr:"7"},{num:"14",id:"980086842",name:"Lor, Landon M",gr:"7"},
-{num:"15",id:"980121133",name:"Mannepalli, Kaarthika",gr:"7"},{num:"16",id:"980119594",name:"Mcmickle, Taliah M",gr:"7"},
-{num:"17",id:"980087065",name:"Mehrabi, Sobhanallah",gr:"7"},{num:"18",id:"980130063",name:"Mondragon, Matthew F",gr:"7"},
-{num:"19",id:"980112218",name:"Mulla, Faizah",gr:"7"},{num:"20",id:"980120044",name:"Patel, Dhven Y",gr:"7"},
-{num:"21",id:"980112319",name:"Scott, Izai'yah J",gr:"7"},{num:"22",id:"980134467",name:"Singh, Brahmtej",gr:"7"},
-{num:"23",id:"980120703",name:"Singh, Ranvijay",gr:"7"},{num:"24",id:"980125377",name:"Singh, Yuvraj",gr:"7"},
-{num:"25",id:"980133795",name:"Statler, Fiona",gr:"7"},{num:"26",id:"980132858",name:"Tessema, Karode",gr:"7"},
-{num:"27",id:"980089370",name:"Togami, Tyler K",gr:"7"},{num:"28",id:"980121701",name:"Torres, Amira R",gr:"7"},
-{num:"29",id:"980127829",name:"Usman, Zimal",gr:"7"},{num:"30",id:"980134623",name:"Zafaruddin, Tayeba H",gr:"7"}
-]
-},
-"6": {
-name: "Period 6", course: "Sports Per.", time: "1:49PM-2:42PM",
-students: [
-{num:"01",id:"980089724",name:"Chaudhry, Eiliyah A",gr:"7"},{num:"02",id:"980123581",name:"Cheema, Eakam",gr:"8"},
-{num:"03",id:"980131526",name:"Devlin, Hayden J",gr:"7"},{num:"04",id:"980100984",name:"Hoang, Dylan T",gr:"8"},
-{num:"05",id:"980131377",name:"Isidro, Jacob Magnus",gr:"7"},{num:"06",id:"980123722",name:"Kaur, Ekam Jot",gr:"8"},
-{num:"07",id:"980072291",name:"Lakkham, Jrayden R",gr:"8"},{num:"08",id:"980093514",name:"Larios Magallanes, Eliana A",gr:"7"},
-{num:"09",id:"980126024",name:"Latu, Aulani",gr:"8"},{num:"10",id:"980107683",name:"Licarte, Macey Dara G",gr:"7"},
-{num:"11",id:"980086842",name:"Lor, Landon M",gr:"7"},{num:"12",id:"980119594",name:"Mcmickle, Taliah M",gr:"7"},
-{num:"13",id:"980090622",name:"Nguyen, Max D",gr:"7"},{num:"14",id:"980120044",name:"Patel, Dhven Y",gr:"7"},
-{num:"15",id:"980128468",name:"Sepulona, Darlene F",gr:"8"},{num:"16",id:"980134446",name:"Singh, Sahib",gr:"8"},
-{num:"17",id:"980125377",name:"Singh, Yuvraj",gr:"7"},{num:"18",id:"980121796",name:"Tandel, Advay K",gr:"7"},
-{num:"19",id:"980130914",name:"Umpierre, Christopher A",gr:"8"},{num:"20",id:"980083935",name:"Vi, Saffonie L",gr:"8"},
-{num:"21",id:"980128461",name:"Wood, Angelique S",gr:"8"}
-]
-}
+  "2": { name: "Period 2", course: "PE 8", time: "9:07AM-10:05AM", students: [
+    {num:"01",id:"980121804",name:"Cannon, E'Laayah D",gr:"8"},{num:"02",id:"980116259",name:"Chacon, Angel I",gr:"8"},{num:"03",id:"980084524",name:"De Los Santos, Lily S",gr:"8"},{num:"04",id:"980124591",name:"Entriken, Dean O",gr:"8"},{num:"05",id:"980108115",name:"Escorcia Jimenez, Salma S",gr:"8"},{num:"06",id:"980120791",name:"Hajdari, Ejahani M",gr:"8"},{num:"07",id:"980127578",name:"Hemmings, Katana L",gr:"8"},{num:"08",id:"980079411",name:"Hernandez, Elena",gr:"8"},{num:"09",id:"980100984",name:"Hoang, Dylan T",gr:"8"},{num:"10",id:"980083466",name:"Jacinto, Sofia M",gr:"8"},{num:"11",id:"980120027",name:"Kloes, Isabella R",gr:"8"},{num:"12",id:"980126951",name:"Kundawala, Taha",gr:"8"},{num:"13",id:"980072291",name:"Lakkham, Jrayden R",gr:"8"},{num:"14",id:"980126909",name:"Lao, Oliver",gr:"8"},{num:"15",id:"980078697",name:"Malloy, Kenneth K",gr:"8"},{num:"16",id:"980075313",name:"Martin, Josiah",gr:"8"},{num:"17",id:"980085313",name:"McZeek Adger, Amari M",gr:"8"},{num:"18",id:"980076645",name:"Mier, Oscar N",gr:"8"},{num:"19",id:"980090572",name:"Noel, Colter R",gr:"8"},{num:"20",id:"980069911",name:"Pruitt, Isaiah L",gr:"8"},{num:"21",id:"980075284",name:"Rodriguez Meraz, Sarah S",gr:"8"},{num:"22",id:"980121801",name:"Singh, Abhay Partap",gr:"8"},{num:"23",id:"980130016",name:"Singh, Ekamjot",gr:"8"},{num:"24",id:"980101688",name:"Snider, Haziah L",gr:"8"},{num:"25",id:"980077720",name:"Staklis, Katherine E",gr:"8"},{num:"26",id:"980126915",name:"Thao, Sheldon K",gr:"8"},{num:"27",id:"980130914",name:"Umpierre, Christopher A",gr:"8"},{num:"28",id:"980083935",name:"Vi, Saffonie L",gr:"8"},{num:"29",id:"980121850",name:"Waahedi, Amir A",gr:"8"},{num:"30",id:"980127689",name:"Washington, Melvin",gr:"8"},{num:"31",id:"980119577",name:"Wong, Candice Z",gr:"8"},{num:"32",id:"980086386",name:"Yang, Gabriel C",gr:"8"}
+  ]},
+  "3": { name: "Period 3", course: "PE 7", time: "10:09AM-11:07AM", students: [
+    {num:"01",id:"980132223",name:"Adele, Ademide W",gr:"7"},{num:"02",id:"980127570",name:"Anwari, Mustafa K",gr:"7"},{num:"03",id:"980121582",name:"Baeza, Maria E",gr:"7"},{num:"04",id:"980119459",name:"Bhatti, Mehtab S",gr:"7"},{num:"05",id:"980081684",name:"Casey Hollinger, Kairo R",gr:"7"},{num:"06",id:"980089724",name:"Chaudhry, Eiliyah A",gr:"7"},{num:"07",id:"980090151",name:"Cole, Emiyah N",gr:"7"},{num:"08",id:"980098265",name:"Coleman, Donovan J",gr:"7"},{num:"09",id:"980131526",name:"Devlin, Hayden J",gr:"7"},{num:"10",id:"980094507",name:"Ford, Marcus K",gr:"7"},{num:"11",id:"980091657",name:"Hong, Ally",gr:"7"},{num:"12",id:"980131377",name:"Isidro, Jacob Magnus",gr:"7"},{num:"13",id:"980119317",name:"Jijesh, Ardra",gr:"7"},{num:"14",id:"980124561",name:"Kaur, Arpan",gr:"7"},{num:"15",id:"980123519",name:"Kaur, Sahajpreet",gr:"7"},{num:"16",id:"980128606",name:"Langston, Elijah B",gr:"7"},{num:"17",id:"980107683",name:"Licarte, Macey Dara G",gr:"7"},{num:"18",id:"980090117",name:"Mangat, Manraj S",gr:"7"},{num:"19",id:"980126927",name:"May, Ahmiya D",gr:"7"},{num:"20",id:"980120279",name:"Mistry, Tvesha S",gr:"7"},{num:"21",id:"980130064",name:"Mondragon, Michael F",gr:"7"},{num:"22",id:"980090622",name:"Nguyen, Max D",gr:"7"},{num:"23",id:"980132829",name:"Ochoa Mendoza, Maite",gr:"7"},{num:"24",id:"980084795",name:"Sanchez, Emily V",gr:"7"},{num:"25",id:"980123522",name:"Singh, Abhijot",gr:"7"},{num:"26",id:"980123988",name:"Stevenson, Paris A",gr:"7"},{num:"27",id:"980121796",name:"Tandel, Advay K",gr:"7"},{num:"28",id:"980123670",name:"Torres Sauceda, Farah",gr:"7"},{num:"29",id:"980133417",name:"Vasisht, Aarav",gr:"7"},{num:"30",id:"980109819",name:"Warren, Leia A",gr:"7"}
+  ]},
+  "4": { name: "Period 4", course: "PE 8", time: "11:11AM-12:09PM", students: [
+    {num:"01",id:"980084003",name:"Campbell, Rayaa",gr:"8"},{num:"02",id:"980123581",name:"Cheema, Eakam",gr:"8"},{num:"03",id:"980123950",name:"Correa, Aliyah J",gr:"8"},{num:"04",id:"980130633",name:"Doty, Sophia F",gr:"8"},{num:"05",id:"980083552",name:"Dunn, Samuel C",gr:"8"},{num:"06",id:"980080125",name:"Elbert, Tamiya D",gr:"8"},{num:"07",id:"980113466",name:"Gopi, Aadharsh",gr:"8"},{num:"08",id:"980121927",name:"Hinse, Isaiah E",gr:"8"},{num:"09",id:"980123722",name:"Kaur, Ekam Jot",gr:"8"},{num:"10",id:"980107806",name:"Landayan, Bradley M",gr:"8"},{num:"11",id:"980126024",name:"Latu, Aulani",gr:"8"},{num:"12",id:"980098934",name:"Magana Garcia, Galilea",gr:"8"},{num:"13",id:"980134444",name:"Mangat, Manveer S",gr:"8"},{num:"14",id:"980075312",name:"Martin, Jeremiah",gr:"8"},{num:"15",id:"980124295",name:"McFadden, Caleb D",gr:"8"},{num:"16",id:"980084618",name:"Moua, Ethan T",gr:"8"},{num:"17",id:"980121531",name:"Robinson, Jaylen A",gr:"8"},{num:"18",id:"980134653",name:"Safi, Ahmad S",gr:"8"},{num:"19",id:"980112837",name:"Saqeb, Mohammad Usman",gr:"8"},{num:"20",id:"980128468",name:"Sepulona, Darlene F",gr:"8"},{num:"21",id:"980134446",name:"Singh, Sahib",gr:"8"},{num:"22",id:"980128698",name:"Smith, Coby D",gr:"8"},{num:"23",id:"980125440",name:"Solonenko, Emiliia",gr:"8"},{num:"24",id:"980115191",name:"Taylor-Jones, Marlo K",gr:"8"},{num:"25",id:"980114717",name:"Tiwari, Arjun",gr:"8"},{num:"26",id:"980121844",name:"Walker, Adalyn R",gr:"8"},{num:"27",id:"980083104",name:"Wolford, Caleb A",gr:"8"},{num:"28",id:"980128461",name:"Wood, Angelique S",gr:"8"},{num:"29",id:"980083999",name:"Zaplava, Sophia",gr:"8"}
+  ]},
+  "5": { name: "Period 5", course: "PE 7", time: "12:48PM-1:45PM", students: [
+    {num:"01",id:"980133424",name:"Arora, Armaan",gr:"7"},{num:"02",id:"980132804",name:"Bankston, Londyn L",gr:"7"},{num:"03",id:"980092363",name:"Barton, Leilani N",gr:"7"},{num:"04",id:"980120943",name:"Bhullar, Lovepreet S",gr:"7"},{num:"05",id:"980078701",name:"Briggs Turk, Kahliya",gr:"7"},{num:"06",id:"980080079",name:"Cox, Isabelle K",gr:"7"},{num:"07",id:"980109191",name:"Elochukwu, Kenechukwu S",gr:"7"},{num:"08",id:"980121706",name:"Goraya, Kirpa K",gr:"7"},{num:"09",id:"980134447",name:"Jeanjaquet, David Luke",gr:"7"},{num:"10",id:"980120660",name:"Kaur, Gunngeet",gr:"7"},{num:"11",id:"980130774",name:"Kaur, Seerat",gr:"7"},{num:"12",id:"980084015",name:"Knieriem, Knox R",gr:"7"},{num:"13",id:"980093514",name:"Larios Magallanes, Eliana A",gr:"7"},{num:"14",id:"980086842",name:"Lor, Landon M",gr:"7"},{num:"15",id:"980121133",name:"Mannepalli, Kaarthika",gr:"7"},{num:"16",id:"980119594",name:"Mcmickle, Taliah M",gr:"7"},{num:"17",id:"980087065",name:"Mehrabi, Sobhanallah",gr:"7"},{num:"18",id:"980130063",name:"Mondragon, Matthew F",gr:"7"},{num:"19",id:"980112218",name:"Mulla, Faizah",gr:"7"},{num:"20",id:"980120044",name:"Patel, Dhven Y",gr:"7"},{num:"21",id:"980112319",name:"Scott, Izai'yah J",gr:"7"},{num:"22",id:"980134467",name:"Singh, Brahmtej",gr:"7"},{num:"23",id:"980120703",name:"Singh, Ranvijay",gr:"7"},{num:"24",id:"980125377",name:"Singh, Yuvraj",gr:"7"},{num:"25",id:"980133795",name:"Statler, Fiona",gr:"7"},{num:"26",id:"980132858",name:"Tessema, Karode",gr:"7"},{num:"27",id:"980089370",name:"Togami, Tyler K",gr:"7"},{num:"28",id:"980121701",name:"Torres, Amira R",gr:"7"},{num:"29",id:"980127829",name:"Usman, Zimal",gr:"7"},{num:"30",id:"980134623",name:"Zafaruddin, Tayeba H",gr:"7"}
+  ]},
+  "6": { name: "Period 6", course: "Sports Per.", time: "1:49PM-2:42PM", students: [
+    {num:"01",id:"980089724",name:"Chaudhry, Eiliyah A",gr:"7"},{num:"02",id:"980123581",name:"Cheema, Eakam",gr:"8"},{num:"03",id:"980131526",name:"Devlin, Hayden J",gr:"7"},{num:"04",id:"980100984",name:"Hoang, Dylan T",gr:"8"},{num:"05",id:"980131377",name:"Isidro, Jacob Magnus",gr:"7"},{num:"06",id:"980123722",name:"Kaur, Ekam Jot",gr:"8"},{num:"07",id:"980072291",name:"Lakkham, Jrayden R",gr:"8"},{num:"08",id:"980093514",name:"Larios Magallanes, Eliana A",gr:"7"},{num:"09",id:"980126024",name:"Latu, Aulani",gr:"8"},{num:"10",id:"980107683",name:"Licarte, Macey Dara G",gr:"7"},{num:"11",id:"980086842",name:"Lor, Landon M",gr:"7"},{num:"12",id:"980119594",name:"Mcmickle, Taliah M",gr:"7"},{num:"13",id:"980090622",name:"Nguyen, Max D",gr:"7"},{num:"14",id:"980120044",name:"Patel, Dhven Y",gr:"7"},{num:"15",id:"980128468",name:"Sepulona, Darlene F",gr:"8"},{num:"16",id:"980134446",name:"Singh, Sahib",gr:"8"},{num:"17",id:"980125377",name:"Singh, Yuvraj",gr:"7"},{num:"18",id:"980121796",name:"Tandel, Advay K",gr:"7"},{num:"19",id:"980130914",name:"Umpierre, Christopher A",gr:"8"},{num:"20",id:"980083935",name:"Vi, Saffonie L",gr:"8"},{num:"21",id:"980128461",name:"Wood, Angelique S",gr:"8"}
+  ]}
 };
-const STORAGE_KEY = "northlake_pe_avrech_v1";
-const SNAPSHOT_KEY = "northlake_pe_snapshots_v1";
-let state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
-activePeriod: "2",
-scheduleOverride: "AUTO",
-customLogo: "",
-rosters: DEFAULT_ROSTERS,
-weeklyData: {},
-prs: {},
-fitness: {},
-assignments: [{ id: "a1", name: "Daily Skill & Effort Rubric", max: 20, scores: {} }],
-lockers: { Boys: [], Girls: [] },
-archive: []
-};
-let activeLockerGender = "Boys";
-let modalTargetStudent = null;
-let modalMingaType = "pos";
-function saveState() {
-localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-runDailyAutoBackup();
-}
-function applyLogo() {
-if (state.customLogo) {
-const img = document.getElementById("schoolLogoImg");
-img.src = state.customLogo;
-img.style.display = "block";
-document.getElementById("logoFallback").style.display = "none";
-}
-}
-function handleLogoUpload(e) {
-const file = e.target.files.item(0);
-if (!file) return;
-const reader = new FileReader();
-reader.onload = function(ev) {
-state.customLogo = ev.target.result;
-saveState();
-applyLogo();
-alert("Northlake Jets logo updated!");
-};
-reader.readAsDataURL(file);
-}
+</script>
+<script>
+const STORAGE_KEY = "northlake_pe_avrech_v1", SNAPSHOT_KEY = "northlake_pe_snapshots_v1";
+let state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || { activePeriod: "2", scheduleOverride: "AUTO", customLogo: "", rosters: DEFAULT_ROSTERS, weeklyData: {}, prs: {}, fitness: {}, assignments: [{ id: "a1", name: "Daily Skill & Effort Rubric", max: 20, scores: {} }], lockers: { Boys: [], Girls: [] }, archive: [] };
+let activeLockerGender = "Boys", modalTargetStudent = null, modalMingaType = "pos";
+
+function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); runDailyAutoBackup(); }
+function applyLogo() { if (state.customLogo) { const img = document.getElementById("schoolLogoImg"); img.src = state.customLogo; img.style.display = "block"; document.getElementById("logoFallback").style.display = "none"; } }
+function handleLogoUpload(e) { const file = e.target.files.item(0); if (!file) return; const r = new FileReader(); r.onload = function(ev) { state.customLogo = ev.target.result; saveState(); applyLogo(); alert("Logo updated!"); }; r.readAsDataURL(file); }
 function runDailyAutoBackup() {
-const today = new Date().toISOString().slice(0, 10);
-let snaps = JSON.parse(localStorage.getItem(SNAPSHOT_KEY)) || [];
-const existingIdx = snaps.findIndex(function(s) { return s.date === today; });
-const entry = { date: today, time: new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}), data: JSON.stringify(state) };
-if (existingIdx >= 0) snaps.splice(existingIdx, 1, entry);
-else snaps.unshift(entry);
-snaps = snaps.slice(0, 7);
-localStorage.setItem(SNAPSHOT_KEY, JSON.stringify(snaps));
-document.getElementById("backupStatus").textContent = "✓ Backed up " + entry.time;
-renderSnapshots();
+  const today = new Date().toISOString().slice(0, 10);
+  let snaps = JSON.parse(localStorage.getItem(SNAPSHOT_KEY)) || [];
+  const idx = snaps.findIndex(function(s) { return s.date === today; });
+  const entry = { date: today, time: new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}), data: JSON.stringify(state) };
+  if (idx >= 0) snaps.splice(idx, 1, entry); else snaps.unshift(entry);
+  snaps = snaps.slice(0, 7); localStorage.setItem(SNAPSHOT_KEY, JSON.stringify(snaps));
+  document.getElementById("backupStatus").textContent = "✓ Backed up " + entry.time; renderSnapshots();
 }
-function renderSnapshots() {
-const snaps = JSON.parse(localStorage.getItem(SNAPSHOT_KEY)) || [];
-const sel = document.getElementById("snapshotSelect");
-if (!sel) return;
-sel.innerHTML = snaps.map(function(s, i) { return '' + s.date + ' at ' + s.time + ''; }).join("");
-}
-function restoreSnapshot() {
-const snaps = JSON.parse(localStorage.getItem(SNAPSHOT_KEY)) || [];
-const idx = Number(document.getElementById("snapshotSelect").value);
-const chosen = snaps.at(idx);
-if (chosen && confirm("Restore data from " + chosen.date + "?")) {
-state = JSON.parse(chosen.data);
-saveState();
-applyLogo();
-refreshAll();
-}
-}
+function renderSnapshots() { const snaps = JSON.parse(localStorage.getItem(SNAPSHOT_KEY)) || []; const sel = document.getElementById("snapshotSelect"); if (sel) sel.innerHTML = snaps.map(function(s, i) { return '<option value="' + i + '">' + s.date + ' at ' + s.time + '</option>'; }).join(""); }
+function restoreSnapshot() { const snaps = JSON.parse(localStorage.getItem(SNAPSHOT_KEY)) || []; const chosen = snaps.at(Number(document.getElementById("snapshotSelect").value)); if (chosen && confirm("Restore from " + chosen.date + "?")) { state = JSON.parse(chosen.data); saveState(); applyLogo(); refreshAll(); } }
+
 const SCHEDULES = {
-REGULAR: [
-{ p: "2", startH: 9, startM: 7, endH: 10, endM: 5 },
-{ p: "3", startH: 10, startM: 9, endH: 11, endM: 7 },
-{ p: "4", startH: 11, startM: 11, endH: 12, endM: 9 },
-{ p: "5", startH: 12, startM: 48, endH: 13, endM: 45 },
-{ p: "6", startH: 13, startM: 49, endH: 14, endM: 42 }
-],
-WED: [
-{ p: "2", startH: 8, startM: 51, endH: 9, endM: 38 },
-{ p: "3", startH: 9, startM: 42, endH: 10, endM: 29 },
-{ p: "4", startH: 11, startM: 8, endH: 11, endM: 53 },
-{ p: "5", startH: 11, startM: 57, endH: 12, endM: 42 }
-]
+  REGULAR: [{ p:"2",startH:9,startM:7,endH:10,endM:5 },{ p:"3",startH:10,startM:9,endH:11,endM:7 },{ p:"4",startH:11,startM:11,endH:12,endM:9 },{ p:"5",startH:12,startM:48,endH:13,endM:45 },{ p:"6",startH:13,startM:49,endH:14,endM:42 }],
+  WED: [{ p:"2",startH:8,startM:51,endH:9,endM:38 },{ p:"3",startH:9,startM:42,endH:10,endM:29 },{ p:"4",startH:11,startM:8,endH:11,endM:53 },{ p:"5",startH:11,startM:57,endH:12,endM:42 }]
 };
-function toggleScheduleMode() {
-const order = ["AUTO", "REGULAR", "WED"];
-state.scheduleOverride = order.at((order.indexOf(state.scheduleOverride) + 1) % 3);
-saveState();
-updateClock();
-}
+function toggleScheduleMode() { const o = ["AUTO","REGULAR","WED"]; state.scheduleOverride = o.at((o.indexOf(state.scheduleOverride)+1)%3); saveState(); updateClock(); }
 function updateClock() {
-const now = new Date();
-document.getElementById("liveDate").textContent = now.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" });
-document.getElementById("liveClock").textContent = now.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", second: "2-digit" });
-const isWed = state.scheduleOverride === "WED" || (state.scheduleOverride === "AUTO" && now.getDay() === 3);
-document.getElementById("schedToggleBtn").textContent = "Schedule: " + (state.scheduleOverride === "AUTO" ? (isWed ? "Auto (Wed)" : "Auto (Reg)") : state.scheduleOverride);
-const activeSched = isWed ? SCHEDULES.WED : SCHEDULES.REGULAR;
-const nowSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-let currentSlot = activeSched.find(function(s) { return nowSec >= (s.startH * 3600 + s.startM * 60) && nowSec < (s.endH * 3600 + s.endM * 60); });
-if (!currentSlot) currentSlot = activeSched.find(function(s) { return s.p === state.activePeriod; });
-const pill = document.getElementById("countdownPill");
-const statusEl = document.getElementById("countdownStatus");
-const textEl = document.getElementById("countdownText");
-if (!currentSlot) {
-pill.className = "countdown-pill ended";
-statusEl.textContent = (isWed && state.activePeriod === "6") ? "NO PER 6 WED" : "OFF BELL";
-textEl.textContent = "--:--";
-return;
+  const now = new Date();
+  document.getElementById("liveDate").textContent = now.toLocaleDateString("en-US", { weekday:"short", month:"short", day:"numeric", year:"numeric" });
+  document.getElementById("liveClock").textContent = now.toLocaleTimeString("en-US", { hour:"numeric", minute:"2-digit", second:"2-digit" });
+  const isWed = state.scheduleOverride === "WED" || (state.scheduleOverride === "AUTO" && now.getDay() === 3);
+  document.getElementById("schedToggleBtn").textContent = "Schedule: " + (state.scheduleOverride === "AUTO" ? (isWed ? "Auto (Wed)" : "Auto (Reg)") : state.scheduleOverride);
+  const sched = isWed ? SCHEDULES.WED : SCHEDULES.REGULAR;
+  const nowSec = now.getHours()*3600 + now.getMinutes()*60 + now.getSeconds();
+  let slot = sched.find(function(s) { return nowSec >= (s.startH*3600+s.startM*60) && nowSec < (s.endH*3600+s.endM*60); }) || sched.find(function(s) { return s.p === state.activePeriod; });
+  const pill = document.getElementById("countdownPill"), st = document.getElementById("countdownStatus"), tx = document.getElementById("countdownText");
+  if (!slot) { pill.className = "countdown-pill ended"; st.textContent = (isWed && state.activePeriod === "6") ? "NO PER 6 WED" : "OFF BELL"; tx.textContent = "--:--"; return; }
+  const sSec = slot.startH*3600 + slot.startM*60, eSec = slot.endH*3600 + slot.endM*60;
+  if (nowSec < sSec) { pill.className = "countdown-pill ended"; st.textContent = "P" + slot.p + " STARTS IN"; tx.textContent = formatMMSS(sSec - nowSec); }
+  else if (nowSec < eSec) { const rem = eSec - nowSec; pill.className = rem <= 300 ? "countdown-pill warning" : "countdown-pill"; st.textContent = "P" + slot.p + " TIME LEFT"; tx.textContent = formatMMSS(rem); }
+  else { pill.className = "countdown-pill ended"; st.textContent = "P" + slot.p + " ENDED"; tx.textContent = "00:00"; }
 }
-const startSec = currentSlot.startH * 3600 + currentSlot.startM * 60;
-const endSec = currentSlot.endH * 3600 + currentSlot.endM * 60;
-if (nowSec < startSec) {
-pill.className = "countdown-pill ended";
-statusEl.textContent = "P" + currentSlot.p + " STARTS IN";
-textEl.textContent = formatMMSS(startSec - nowSec);
-} else if (nowSec < endSec) {
-const rem = endSec - nowSec;
-pill.className = rem <= 300 ? "countdown-pill warning" : "countdown-pill";
-statusEl.textContent = "P" + currentSlot.p + " TIME LEFT";
-textEl.textContent = formatMMSS(rem);
-} else {
-pill.className = "countdown-pill ended";
-statusEl.textContent = "P" + currentSlot.p + " ENDED";
-textEl.textContent = "00:00";
-}
-}
-function formatMMSS(sec) {
-const m = Math.floor(sec / 60);
-const s = sec % 60;
-return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
-}
+function formatMMSS(s) { return String(Math.floor(s/60)).padStart(2,"0") + ":" + String(s%60).padStart(2,"0"); }
 setInterval(updateClock, 1000);
-function switchTab(tabId, btn) {
-document.querySelectorAll(".tab-pane").forEach(function(p) { p.classList.remove("active"); });
-document.querySelectorAll("nav button").forEach(function(b) { b.classList.remove("active"); });
-document.getElementById("tab-" + tabId).classList.add("active");
-btn.classList.add("active");
-refreshAll();
-}
-function selectPeriod(p) {
-state.activePeriod = p;
-saveState();
-refreshAll();
-}
-function getStudentWeekRecord(p, sid) {
-if (!state.weeklyData[p]) state.weeklyData[p] = {};
-if (!state.weeklyData[p][sid]) state.weeklyData[p][sid] = { absent: false, deductions: [], minga: [] };
-return state.weeklyData[p][sid];
-}
-function getStudentWeeklyScore(p, sid) {
-const rec = getStudentWeekRecord(p, sid);
-const lost = rec.deductions.reduce(function(sum, d) { return sum + Number(d.pts); }, 0);
-return Math.max(0, 50 - lost);
-}
+
+function switchTab(id, btn) { document.querySelectorAll(".tab-pane").forEach(function(p){p.classList.remove("active");}); document.querySelectorAll("nav button").forEach(function(b){b.classList.remove("active");}); document.getElementById("tab-"+id).classList.add("active"); btn.classList.add("active"); refreshAll(); }
+function selectPeriod(p) { state.activePeriod = p; saveState(); refreshAll(); }
+function getStudentWeekRecord(p, sid) { if (!state.weeklyData[p]) state.weeklyData[p] = {}; if (!state.weeklyData[p][sid]) state.weeklyData[p][sid] = { absent:false, deductions:[], minga:[] }; return state.weeklyData[p][sid]; }
+function getStudentWeeklyScore(p, sid) { return Math.max(0, 50 - getStudentWeekRecord(p, sid).deductions.reduce(function(sum, d){ return sum + Number(d.pts); }, 0)); }
+
 function renderHome() {
-const grid = document.getElementById("periodGrid");
-const pObj = state.rosters[state.activePeriod];
-document.getElementById("activePeriodLabel").textContent = pObj.name + " (" + pObj.course + ")";
-grid.innerHTML = Object.keys(state.rosters).map(function(p) {
-const r = state.rosters[p];
-const selClass = (p === state.activePeriod) ? "selected" : "";
-return '' +
-'' + r.name + ' • ' + r.course + '' +
-'' + r.students.length + ' Students • ' + r.time + '' +
-'';
-}).join("");
+  const pObj = state.rosters[state.activePeriod];
+  document.getElementById("activePeriodLabel").textContent = pObj.name + " (" + pObj.course + ")";
+  document.getElementById("periodGrid").innerHTML = Object.keys(state.rosters).map(function(p) {
+    const r = state.rosters[p];
+    return '<button class="period-card ' + (p===state.activePeriod?'selected':'') + '" onclick="selectPeriod(\'' + p + '\')"><div class="p-title">' + r.name + ' • ' + r.course + '</div><div class="p-meta">' + r.students.length + ' Students • ' + r.time + '</div></button>';
+  }).join("");
 }
+
 function renderPointsList() {
-const p = state.activePeriod;
-const r = state.rosters[p];
-document.getElementById("pointsHeaderTitle").textContent = r.name + " (" + r.course + ") • Weekly Points (/50)";
-const q = document.getElementById("studentSearch").value.toLowerCase();
-const list = document.getElementById("pointsStudentList");
-list.innerHTML = r.students
-.filter(function(s) { return s.name.toLowerCase().includes(q) || s.num.includes(q); })
-.map(function(s) {
-const rec = getStudentWeekRecord(p, s.id);
-const score = getStudentWeeklyScore(p, s.id);
-const posCount = rec.minga.filter(function(m) { return m.type === "pos"; }).length;
-const negCount = rec.minga.filter(function(m) { return m.type === "neg"; }).length;
-const rowStyle = rec.absent ? "opacity:0.55;" : "";
-const dedBadge = rec.deductions.length ? '• ' + rec.deductions.length + ' deduction(s)' : '';
-const posBadge = posCount ? '• ✔ ' + posCount + ' Minga+' : '';
-const negBadge = negCount ? '• 🚩 ' + negCount + ' Minga-' : '';
-const absBtnClass = rec.absent ? "btn-red" : "btn-outline";
-const absBtnText = rec.absent ? "Absent" : "Present";
-const lowClass = score < 40 ? "low" : "";
-return '' +
-'' +
-'#' + s.num + '' +
-'' + s.name + '' +
-'ID: ' + s.id + '' + dedBadge + posBadge + negBadge + '' +
-'' +
-'' +
-'' + absBtnText + '' +
-'✔' +
-'🚩' +
-'- Pts' +
-'' + score + '/50' +
-'' +
-'';
-}).join("");
+  const p = state.activePeriod, r = state.rosters[p], q = document.getElementById("studentSearch").value.toLowerCase();
+  document.getElementById("pointsHeaderTitle").textContent = r.name + " (" + r.course + ") • Weekly Points (/50)";
+  document.getElementById("pointsStudentList").innerHTML = r.students.filter(function(s){ return s.name.toLowerCase().includes(q) || s.num.includes(q); }).map(function(s) {
+    const rec = getStudentWeekRecord(p, s.id), score = getStudentWeeklyScore(p, s.id);
+    const pos = rec.minga.filter(function(m){return m.type==="pos";}).length, neg = rec.minga.filter(function(m){return m.type==="neg";}).length;
+    return '<div class="student-row" style="' + (rec.absent?'opacity:0.55;':'') + '"><div class="s-info" onclick="openSynopsis(\'' + s.id + '\')"><span class="s-num">#' + s.num + '</span><span class="s-name">' + s.name + '</span><div class="s-badges"><span>ID: ' + s.id + '</span>' + (rec.deductions.length?'<span style="color:var(--red);font-weight:700;">• '+rec.deductions.length+' ded</span>':'') + (pos?'<span style="color:var(--green);font-weight:700;">• ✔ '+pos+'</span>':'') + (neg?'<span style="color:var(--red);font-weight:700;">• 🚩 '+neg+'</span>':'') + '</div></div><div class="s-actions"><button class="btn btn-sm ' + (rec.absent?'btn-red':'btn-outline') + '" onclick="toggleAbsent(\'' + s.id + '\')">' + (rec.absent?'Absent':'Present') + '</button><button class="btn btn-sm btn-green" onclick="openMingaModal(\'' + s.id + '\',\'pos\')">✔</button><button class="btn btn-sm btn-red" onclick="openMingaModal(\'' + s.id + '\',\'neg\')">🚩</button><button class="btn btn-sm btn-amber" onclick="openDeductModal(\'' + s.id + '\')">- Pts</button><div class="score-pill ' + (score<40?'low':'') + '">' + score + '/50</div></div></div>';
+  }).join("");
 }
-function toggleAbsent(sid) {
-const rec = getStudentWeekRecord(state.activePeriod, sid);
-rec.absent = !rec.absent;
-saveState();
-renderPointsList();
-}
-function openDeductModal(sid) {
-modalTargetStudent = sid;
-const s = state.rosters[state.activePeriod].students.find(function(x) { return x.id === sid; });
-document.getElementById("deductModalTitle").textContent = "Deduct Points: " + s.name;
-document.getElementById("deductNotes").value = "";
-document.getElementById("deductModal").classList.add("open");
-}
-function submitDeduction() {
-const rec = getStudentWeekRecord(state.activePeriod, modalTargetStudent);
-rec.deductions.push({
-date: new Date().toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }),
-pts: Number(document.getElementById("deductAmount").value),
-reason: document.getElementById("deductReason").value,
-notes: document.getElementById("deductNotes").value.trim()
-});
-saveState();
-closeModal("deductModal");
-renderPointsList();
-}
-function openMingaModal(sid, type) {
-modalTargetStudent = sid;
-modalMingaType = type;
-const s = state.rosters[state.activePeriod].students.find(function(x) { return x.id === sid; });
-document.getElementById("mingaModalTitle").textContent = (type === "pos" ? "✔ Positive Minga: " : "🚩 Negative Minga: ") + s.name;
-document.getElementById("mingaNotes").value = "";
-document.getElementById("mingaModal").classList.add("open");
-}
-function submitMinga() {
-const rec = getStudentWeekRecord(state.activePeriod, modalTargetStudent);
-rec.minga.push({
-date: new Date().toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }),
-type: modalMingaType,
-notes: document.getElementById("mingaNotes").value.trim() || (modalMingaType === "pos" ? "Positive PBIS recognition" : "Behavior / Tardy follow-up")
-});
-saveState();
-closeModal("mingaModal");
-renderPointsList();
-}
+
+function toggleAbsent(sid) { const r = getStudentWeekRecord(state.activePeriod, sid); r.absent = !r.absent; saveState(); renderPointsList(); }
+function openDeductModal(sid) { modalTargetStudent = sid; const s = state.rosters[state.activePeriod].students.find(function(x){return x.id===sid;}); document.getElementById("deductModalTitle").textContent = "Deduct Points: " + s.name; document.getElementById("deductNotes").value = ""; document.getElementById("deductModal").classList.add("open"); }
+function submitDeduction() { getStudentWeekRecord(state.activePeriod, modalTargetStudent).deductions.push({ date: new Date().toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"}), pts: Number(document.getElementById("deductAmount").value), reason: document.getElementById("deductReason").value, notes: document.getElementById("deductNotes").value.trim() }); saveState(); closeModal("deductModal"); renderPointsList(); }
+function openMingaModal(sid, type) { modalTargetStudent = sid; modalMingaType = type; const s = state.rosters[state.activePeriod].students.find(function(x){return x.id===sid;}); document.getElementById("mingaModalTitle").textContent = (type==="pos"?"✔ Positive Minga: ":"🚩 Negative Minga: ") + s.name; document.getElementById("mingaNotes").value = ""; document.getElementById("mingaModal").classList.add("open"); }
+function submitMinga() { getStudentWeekRecord(state.activePeriod, modalTargetStudent).minga.push({ date: new Date().toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"}), type: modalMingaType, notes: document.getElementById("mingaNotes").value.trim() || (modalMingaType==="pos"?"Positive PBIS":"Behavior / Tardy") }); saveState(); closeModal("mingaModal"); renderPointsList(); }
 function openSynopsis(sid) {
-const p = state.activePeriod;
-const s = state.rosters[p].students.find(function(x) { return x.id === sid; });
-const rec = getStudentWeekRecord(p, sid);
-const score = getStudentWeeklyScore(p, sid);
-const pr = state.prs[sid] || { mile: "—", pacer: 0 };
-let html = 'ID: ' + s.id + ' • Weekly Score: ' + score + '/50' +
-'Personal Records: Mile PR: ' + (pr.mile || "—") + ' | PACER PR: ' + (pr.pacer || 0) + ' laps' +
-'Point Deductions This Week (' + rec.deductions.length + ')';
-if (!rec.deductions.length) {
-html += 'No deductions logged this week.';
-} else {
-html += rec.deductions.map(function(d, idx) {
-return '' +
-'-' + d.pts + ' pts • ' + d.reason + ' (' + d.date + ')
-' + (d.notes || "No extra notes") +
-'Undo' +
-'';
-}).join("");
+  const p = state.activePeriod, s = state.rosters[p].students.find(function(x){return x.id===sid;}), rec = getStudentWeekRecord(p, sid), score = getStudentWeeklyScore(p, sid), pr = state.prs[sid] || { mile:"—", pacer:0 };
+  let html = '<p><strong>ID:</strong> ' + s.id + ' • <strong>Weekly Score:</strong> ' + score + '/50</p><p><strong>PRs:</strong> Mile: <b>' + (pr.mile||"—") + '</b> | PACER: <b>' + (pr.pacer||0) + ' laps</b></p><h4>Deductions (' + rec.deductions.length + ')</h4>';
+  html += rec.deductions.length ? rec.deductions.map(function(d, idx){ return '<div style="background:#fef2f2;padding:8px;border-radius:8px;margin-bottom:6px;font-size:0.82rem;"><b>-' + d.pts + ' pts • ' + d.reason + '</b> (' + d.date + ')<br>' + (d.notes||'') + '<button class="btn btn-sm btn-outline" style="float:right;" onclick="removeDeduction(\'' + sid + '\',' + idx + ')">Undo</button></div>'; }).join("") : '<p style="font-size:0.82rem;color:var(--muted);">None.</p>';
+  html += '<h4>Minga Flags (' + rec.minga.length + ')</h4>';
+  html += rec.minga.length ? rec.minga.map(function(m){ return '<div style="background:' + (m.type==='pos'?'#f0fdf4':'#fef2f2') + ';padding:8px;border-radius:8px;margin-bottom:6px;font-size:0.82rem;"><b>' + (m.type==='pos'?'✔ Pos':'🚩 Neg') + '</b> (' + m.date + '): ' + m.notes + '</div>'; }).join("") : '<p style="font-size:0.82rem;color:var(--muted);">None.</p>';
+  document.getElementById("synopsisTitle").textContent = "#" + s.num + " " + s.name; document.getElementById("synopsisBody").innerHTML = html; document.getElementById("synopsisModal").classList.add("open");
 }
-html += 'Minga Flags (' + rec.minga.length + ')';
-if (!rec.minga.length) {
-html += 'No Minga flags logged.';
-} else {
-html += rec.minga.map(function(m) {
-const bg = m.type === "pos" ? "#f0fdf4" : "#fef2f2";
-const lbl = m.type === "pos" ? "✔ Positive" : "🚩 Negative";
-return '' +
-'' + lbl + ' (' + m.date + '): ' + m.notes +
-'';
-}).join("");
-}
-document.getElementById("synopsisTitle").textContent = "#" + s.num + " " + s.name;
-document.getElementById("synopsisBody").innerHTML = html;
-document.getElementById("synopsisModal").classList.add("open");
-}
-function removeDeduction(sid, idx) {
-const rec = getStudentWeekRecord(state.activePeriod, sid);
-rec.deductions.splice(idx, 1);
-saveState();
-openSynopsis(sid);
-renderPointsList();
-}
+function removeDeduction(sid, idx) { getStudentWeekRecord(state.activePeriod, sid).deductions.splice(idx, 1); saveState(); openSynopsis(sid); renderPointsList(); }
 function closeModal(id) { document.getElementById(id).classList.remove("open"); }
-function copyScoresForAeries() {
-const p = state.activePeriod;
-const lines = state.rosters[p].students.map(function(s) { return getStudentWeeklyScore(p, s.id); }).join("\n");
-navigator.clipboard.writeText(lines);
-alert("Copied " + state.rosters[p].students.length + " scores (out of 50) in Aeries roster order!");
-}
-function exportAeriesScoresCSV() {
-const p = state.activePeriod;
-let csv = "Student ID,Student Name,Weekly Score\n";
-state.rosters[p].students.forEach(function(s) {
-csv += s.id + ',"' + s.name + '",' + getStudentWeeklyScore(p, s.id) + '\n';
-});
-downloadFile(csv, "Aeries_Grades_Per" + p + ".csv", "text/csv");
-}
+function copyScoresForAeries() { const p = state.activePeriod; navigator.clipboard.writeText(state.rosters[p].students.map(function(s){return getStudentWeeklyScore(p, s.id);}).join("\n")); alert("Copied scores in Aeries order!"); }
+function exportAeriesScoresCSV() { const p = state.activePeriod; let csv = "Student ID,Student Name,Weekly Score\n"; state.rosters[p].students.forEach(function(s){ csv += s.id + ',"' + s.name + '",' + getStudentWeeklyScore(p, s.id) + '\n'; }); downloadFile(csv, "Aeries_Grades_Per" + p + ".csv", "text/csv"); }
+
 let swInterval = null, swElapsed = 0, swRunning = false, lapCounts = {}, lastLapTimes = {};
-function toggleStopwatch() {
-if (swRunning) {
-clearInterval(swInterval);
-swRunning = false;
-document.getElementById("swStartBtn").textContent = "▶ Resume";
-} else {
-const start = Date.now() - swElapsed;
-swInterval = setInterval(function() {
-swElapsed = Date.now() - start;
-document.getElementById("stopwatchDisplay").textContent = formatStopwatch(swElapsed);
-}, 100);
-swRunning = true;
-document.getElementById("swStartBtn").textContent = "⏸ Pause";
-}
-}
-function resetStopwatch() {
-clearInterval(swInterval);
-swRunning = false;
-swElapsed = 0;
-lapCounts = {};
-lastLapTimes = {};
-document.getElementById("stopwatchDisplay").textContent = "00:00.0";
-document.getElementById("swStartBtn").textContent = "▶ Start";
-renderRunnerGrid();
-}
-function formatStopwatch(ms) {
-const totalSec = ms / 1000;
-const m = Math.floor(totalSec / 60);
-const s = (totalSec % 60).toFixed(1);
-return String(m).padStart(2, "0") + ":" + s.padStart(4, "0");
-}
-function recordRunnerLap(sid) {
-lapCounts[sid] = (lapCounts[sid] || 0) + 1;
-lastLapTimes[sid] = formatStopwatch(swElapsed);
-renderRunnerGrid();
-}
+function toggleStopwatch() { if (swRunning) { clearInterval(swInterval); swRunning = false; document.getElementById("swStartBtn").textContent = "▶ Resume"; } else { const st = Date.now() - swElapsed; swInterval = setInterval(function(){ swElapsed = Date.now() - st; document.getElementById("stopwatchDisplay").textContent = formatSW(swElapsed); }, 100); swRunning = true; document.getElementById("swStartBtn").textContent = "⏸ Pause"; } }
+function resetStopwatch() { clearInterval(swInterval); swRunning = false; swElapsed = 0; lapCounts = {}; lastLapTimes = {}; document.getElementById("stopwatchDisplay").textContent = "00:00.0"; document.getElementById("swStartBtn").textContent = "▶ Start"; renderRunnerGrid(); }
+function formatSW(ms) { const s = ms/1000; return String(Math.floor(s/60)).padStart(2,"0") + ":" + (s%60).toFixed(1).padStart(4,"0"); }
+function recordRunnerLap(sid) { lapCounts[sid] = (lapCounts[sid]||0) + 1; lastLapTimes[sid] = formatSW(swElapsed); renderRunnerGrid(); }
 function renderRunnerGrid() {
-const p = state.activePeriod;
-document.getElementById("runnerGrid").innerHTML = state.rosters[p].students.map(function(s) {
-const laps = lapCounts[s.id] || 0;
-const t = lastLapTimes[s.id] || "Tap for Lap 1";
-const pr = state.prs[s.id] || {};
-return '' +
-'#' + s.num + ' ' + s.name + '' +
-'Laps: ' + laps + ' (' + t + ')' +
-'PR: ' + (pr.mile || "--") + ' / ' + (pr.pacer || 0) + 'p' +
-'';
-}).join("");
+  const p = state.activePeriod;
+  document.getElementById("runnerGrid").innerHTML = state.rosters[p].students.map(function(s) {
+    const pr = state.prs[s.id] || {};
+    return '<button class="runner-btn" onclick="recordRunnerLap(\'' + s.id + '\')"><span class="r-name">#' + s.num + ' ' + s.name + '</span><span class="r-laps">Laps: ' + (lapCounts[s.id]||0) + ' (' + (lastLapTimes[s.id]||"Tap") + ')</span><span style="font-size:0.68rem;color:var(--muted);">PR: ' + (pr.mile||"--") + ' / ' + (pr.pacer||0) + 'p</span></button>';
+  }).join("");
 }
 function saveTimerPRs() {
-const mode = document.getElementById("timerModeSelect").value;
-let updated = 0;
-Object.keys(lapCounts).forEach(function(sid) {
-if (!state.prs[sid]) state.prs[sid] = { mile: "", pacer: 0 };
-if (mode === "mile" && lastLapTimes[sid]) {
-state.prs[sid].mile = lastLapTimes[sid];
-updated++;
-} else if (mode === "pacer" && lapCounts[sid] > (state.prs[sid].pacer || 0)) {
-state.prs[sid].pacer = lapCounts[sid];
-updated++;
+  const mode = document.getElementById("timerModeSelect").value; let up = 0;
+  Object.keys(lapCounts).forEach(function(sid) { if (!state.prs[sid]) state.prs[sid] = { mile:"", pacer:0 }; if (mode==="mile" && lastLapTimes[sid]) { state.prs[sid].mile = lastLapTimes[sid]; up++; } else if (mode==="pacer" && lapCounts[sid] > (state.prs[sid].pacer||0)) { state.prs[sid].pacer = lapCounts[sid]; up++; } });
+  saveState(); renderRunnerGrid(); alert("Saved " + up + " PRs!");
 }
-});
-saveState();
-renderRunnerGrid();
-alert("Saved " + updated + " student " + (mode === "mile" ? "Mile" : "PACER") + " records!");
-}
-function pickRandomStudent() {
-const p = state.activePeriod;
-const present = state.rosters[p].students.filter(function(s) { return !getStudentWeekRecord(p, s.id).absent; });
-if (!present.length) return;
-const pick = present.at(Math.floor(Math.random() * present.length));
-document.getElementById("rngNumber").textContent = "#" + pick.num;
-document.getElementById("rngStudent").textContent = pick.name;
-}
+function pickRandomStudent() { const p = state.activePeriod, pres = state.rosters[p].students.filter(function(s){return !getStudentWeekRecord(p, s.id).absent;}); if (!pres.length) return; const pick = pres.at(Math.floor(Math.random()*pres.length)); document.getElementById("rngNumber").textContent = "#" + pick.num; document.getElementById("rngStudent").textContent = pick.name; }
 function generateTeams() {
-const p = state.activePeriod;
-const count = Number(document.getElementById("numTeamsSelect").value);
-const present = state.rosters[p].students.filter(function(s) { return !getStudentWeekRecord(p, s.id).absent; }).slice();
-for (let i = present.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-const temp = present.at(i);
-present.splice(i, 1, present.at(j));
-present.splice(j, 1, temp);
-}
-const teams = Array.from({ length: count }, function() { return []; });
-present.forEach(function(s, i) { teams.at(i % count).push(s); });
-document.getElementById("teamsOutput").innerHTML = teams.map(function(t, idx) {
-const members = t.map(function(s) { return "#" + s.num + " " + s.name; }).join(" • ");
-return '' +
-'Team ' + (idx + 1) + ' (' + t.length + ')' +
-'' + members + '' +
-'';
-}).join("");
+  const p = state.activePeriod, cnt = Number(document.getElementById("numTeamsSelect").value), pres = state.rosters[p].students.filter(function(s){return !getStudentWeekRecord(p, s.id).absent;}).slice();
+  for (let i = pres.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); const tmp = pres.at(i); pres.splice(i,1,pres.at(j)); pres.splice(j,1,tmp); }
+  const teams = Array.from({length:cnt}, function(){return [];}); pres.forEach(function(s, i){ teams.at(i%cnt).push(s); });
+  document.getElementById("teamsOutput").innerHTML = teams.map(function(t, idx){ return '<div style="background:var(--jets-sky-light);border:1px solid var(--jets-sky);border-radius:8px;padding:10px;margin-bottom:8px;"><strong style="color:var(--jets-navy);">Team ' + (idx+1) + ' (' + t.length + ')</strong><div style="font-size:0.82rem;margin-top:4px;">' + t.map(function(s){return "#"+s.num+" "+s.name;}).join(" • ") + '</div></div>'; }).join("");
 }
 function renderFitness() {
-const p = state.activePeriod;
-document.getElementById("fitnessList").innerHTML = state.rosters[p].students.map(function(s) {
-const f = state.fitness[s.id] || { pushups: "", curlups: "", trunk: "", sitreach: "" };
-return '' +
-'#' + s.num + ' ' + s.name + '' +
-'' +
-'' +
-'' +
-'' +
-'';
-}).join("");
+  const p = state.activePeriod;
+  document.getElementById("fitnessList").innerHTML = state.rosters[p].students.map(function(s) {
+    const f = state.fitness[s.id] || { pushups:"", curlups:"", trunk:"", sitreach:"" };
+    return '<div class="fitness-row"><div><strong>#' + s.num + '</strong> ' + s.name + '</div><input type="number" placeholder="0" value="' + f.pushups + '" onchange="updateFitness(\'' + s.id + '\',\'pushups\',this.value)"><input type="number" placeholder="0" value="' + f.curlups + '" onchange="updateFitness(\'' + s.id + '\',\'curlups\',this.value)"><input type="number" placeholder="0" value="' + f.trunk + '" onchange="updateFitness(\'' + s.id + '\',\'trunk\',this.value)"><input type="number" placeholder="0" value="' + f.sitreach + '" onchange="updateFitness(\'' + s.id + '\',\'sitreach\',this.value)"></div>';
+  }).join("");
 }
-function updateFitness(sid, field, val) {
-if (!state.fitness[sid]) state.fitness[sid] = { pushups: "", curlups: "", trunk: "", sitreach: "" };
-state.fitness[sid][field] = val;
-saveState();
-}
-function exportFitnessCSV() {
-const p = state.activePeriod;
-let csv = "Student ID,Name,Pushups,Curlups,Trunk Lift,Sit & Reach,Mile PR,PACER PR\n";
-state.rosters[p].students.forEach(function(s) {
-const f = state.fitness[s.id] || {};
-const pr = state.prs[s.id] || {};
-csv += s.id + ',"' + s.name + '",' + (f.pushups||"") + ',' + (f.curlups||"") + ',' + (f.trunk||"") + ',' + (f.sitreach||"") + ',' + (pr.mile||"") + ',' + (pr.pacer||"") + '\n';
-});
-downloadFile(csv, "Fitness_Testing_Per" + p + ".csv", "text/csv");
-}
+function updateFitness(sid, fld, val) { if (!state.fitness[sid]) state.fitness[sid] = { pushups:"", curlups:"", trunk:"", sitreach:"" }; state.fitness[sid][fld] = val; saveState(); }
+function exportFitnessCSV() { const p = state.activePeriod; let csv = "Student ID,Name,Pushups,Curlups,Trunk Lift,Sit & Reach,Mile PR,PACER PR\n"; state.rosters[p].students.forEach(function(s){ const f = state.fitness[s.id]||{}, pr = state.prs[s.id]||{}; csv += s.id+',"'+s.name+'",'+(f.pushups||"")+','+(f.curlups||"")+','+(f.trunk||"")+','+(f.sitreach||"")+','+(pr.mile||"")+','+(pr.pacer||"")+'\n'; }); downloadFile(csv, "Fitness_Per"+p+".csv", "text/csv"); }
+
 function openNewAssignmentModal() { document.getElementById("assignmentModal").classList.add("open"); }
-function createAssignment() {
-const name = document.getElementById("newAssignName").value.trim();
-const max = Number(document.getElementById("newAssignMax").value) || 20;
-if (!name) return;
-state.assignments.push({ id: "a" + Date.now(), name: name, max: max, scores: {} });
-saveState();
-closeModal("assignmentModal");
-renderRubricGrading();
-}
+function createAssignment() { const n = document.getElementById("newAssignName").value.trim(), m = Number(document.getElementById("newAssignMax").value)||20; if (!n) return; state.assignments.push({ id:"a"+Date.now(), name:n, max:m, scores:{} }); saveState(); closeModal("assignmentModal"); renderRubricGrading(); }
 function renderRubricGrading() {
-const sel = document.getElementById("assignmentSelect");
-const curVal = sel.value || state.assignments.at(0).id;
-sel.innerHTML = state.assignments.map(function(a) {
-const selectedAttr = (a.id === curVal) ? "selected" : "";
-return '<option value="' + a.id + '" ' + selectedAttr + '>' + a.name + ' (' + a.max + ' pts)';
-}).join("");
-const assign = state.assignments.find(function(a) { return a.id === sel.value; }) || state.assignments.at(0);
-const p = state.activePeriod;
-const tiers = [
-{ label: "Exceeds", mult: 1 },
-{ label: "Meets", mult: 0.85 },
-{ label: "Approaching", mult: 0.70 },
-{ label: "Beginning", mult: 0.55 }
-];
-document.getElementById("rubricGradingList").innerHTML = state.rosters[p].students.map(function(s) {
-const curScore = assign.scores[s.id];
-const btns = tiers.map(function(t) {
-const pts = Math.round(assign.max * t.mult);
-const cls = (curScore === pts) ? "btn-primary" : "btn-outline";
-return '' + t.label + ' (' + pts + ')';
-}).join("");
-return '#' + s.num + ' ' + s.name + '' + btns + '';
-}).join("");
+  const sel = document.getElementById("assignmentSelect"), cur = sel.value || state.assignments.at(0).id;
+  sel.innerHTML = state.assignments.map(function(a){ return '<option value="' + a.id + '" ' + (a.id===cur?'selected':'') + '>' + a.name + ' (' + a.max + ' pts)</option>'; }).join("");
+  const assign = state.assignments.find(function(a){return a.id===sel.value;}) || state.assignments.at(0), p = state.activePeriod;
+  const tiers = [{label:"Exceeds",mult:1},{label:"Meets",mult:0.85},{label:"Approaching",mult:0.70},{label:"Beginning",mult:0.55}];
+  document.getElementById("rubricGradingList").innerHTML = state.rosters[p].students.map(function(s) {
+    const sc = assign.scores[s.id];
+    const btns = tiers.map(function(t){ const pts = Math.round(assign.max*t.mult); return '<button class="btn btn-sm ' + (sc===pts?'btn-primary':'btn-outline') + '" onclick="setRubricScore(\'' + assign.id + '\',\'' + s.id + '\',' + pts + ')">' + t.label + ' (' + pts + ')</button>'; }).join("");
+    return '<div class="student-row"><div class="s-info"><strong>#' + s.num + ' ' + s.name + '</strong></div><div class="s-actions">' + btns + '</div></div>';
+  }).join("");
 }
-function setRubricScore(aid, sid, pts) {
-const assign = state.assignments.find(function(a) { return a.id === aid; });
-assign.scores[sid] = pts;
-saveState();
-renderRubricGrading();
-}
-function copyRubricScores() {
-const selVal = document.getElementById("assignmentSelect").value;
-const assign = state.assignments.find(function(a) { return a.id === selVal; });
-const p = state.activePeriod;
-const text = state.rosters[p].students.map(function(s) { return assign.scores[s.id] !== undefined ? assign.scores[s.id] : ""; }).join("\n");
-navigator.clipboard.writeText(text);
-alert("Copied scores for " + assign.name + " in Aeries roster order!");
-}
-function switchLockerGender(g) {
-activeLockerGender = g;
-document.getElementById("btnBoysLocker").className = g === "Boys" ? "btn btn-primary btn-sm" : "btn btn-outline btn-sm";
-document.getElementById("btnGirlsLocker").className = g === "Girls" ? "btn btn-primary btn-sm" : "btn btn-outline btn-sm";
-renderLockers();
-}
-function addLocker() {
-const num = document.getElementById("newLockerNum").value.trim();
-const student = document.getElementById("newLockerStudent").value.trim();
-const combo = document.getElementById("newLockerCombo").value.trim();
-if (!num) return;
-state.lockers[activeLockerGender].push({ num: num, student: student, combo: combo });
-document.getElementById("newLockerNum").value = "";
-document.getElementById("newLockerStudent").value = "";
-document.getElementById("newLockerCombo").value = "";
-saveState();
-renderLockers();
-}
-function deleteLocker(idx) {
-state.lockers[activeLockerGender].splice(idx, 1);
-saveState();
-renderLockers();
-}
+function setRubricScore(aid, sid, pts) { state.assignments.find(function(a){return a.id===aid;}).scores[sid] = pts; saveState(); renderRubricGrading(); }
+function copyRubricScores() { const assign = state.assignments.find(function(a){return a.id===document.getElementById("assignmentSelect").value;}); navigator.clipboard.writeText(state.rosters[state.activePeriod].students.map(function(s){return assign.scores[s.id]!==undefined?assign.scores[s.id]:"";}).join("\n")); alert("Copied scores!"); }
+
+function switchLockerGender(g) { activeLockerGender = g; document.getElementById("btnBoysLocker").className = g==="Boys"?"btn btn-primary btn-sm":"btn btn-outline btn-sm"; document.getElementById("btnGirlsLocker").className = g==="Girls"?"btn btn-primary btn-sm":"btn btn-outline btn-sm"; renderLockers(); }
+function addLocker() { const n = document.getElementById("newLockerNum").value.trim(), s = document.getElementById("newLockerStudent").value.trim(), c = document.getElementById("newLockerCombo").value.trim(); if (!n) return; state.lockers[activeLockerGender].push({num:n,student:s,combo:c}); document.getElementById("newLockerNum").value=""; document.getElementById("newLockerStudent").value=""; document.getElementById("newLockerCombo").value=""; saveState(); renderLockers(); }
+function deleteLocker(idx) { state.lockers[activeLockerGender].splice(idx, 1); saveState(); renderLockers(); }
 function renderLockers() {
-const q = document.getElementById("lockerSearch").value.toLowerCase();
-const list = state.lockers[activeLockerGender] || [];
-const rows = list
-.filter(function(l) { return l.num.toLowerCase().includes(q) || l.student.toLowerCase().includes(q) || l.combo.toLowerCase().includes(q); })
-.map(function(l, idx) {
-return '' +
-'Locker #' + l.num + ' • ' + (l.student || "Unassigned") +
-' Combo: ' + (l.combo || "—") + '' +
-'✕' +
-'';
-}).join("");
-document.getElementById("lockerList").innerHTML = rows || 'No ' + activeLockerGender + ' lockers added yet.';
+  const q = document.getElementById("lockerSearch").value.toLowerCase(), list = state.lockers[activeLockerGender] || [];
+  document.getElementById("lockerList").innerHTML = list.filter(function(l){return l.num.toLowerCase().includes(q)||l.student.toLowerCase().includes(q)||l.combo.toLowerCase().includes(q);}).map(function(l, idx){ return '<div class="student-row"><div><strong>Locker #' + l.num + '</strong> • ' + (l.student||"Unassigned") + ' <span style="background:var(--jets-sky-light);border:1px solid var(--jets-sky);padding:2px 6px;border-radius:4px;font-weight:700;margin-left:6px;">Combo: ' + (l.combo||"—") + '</span></div><button class="btn btn-sm btn-outline" onclick="deleteLocker(' + idx + ')">✕</button></div>'; }).join("") || '<p style="font-size:0.8rem;color:var(--muted);">No lockers added yet.</p>';
 }
-function openArchiveWeekModal() {
-document.getElementById("archiveWeekLabel").value = "Week of " + new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" });
-document.getElementById("archiveModal").classList.add("open");
-}
+
+function openArchiveWeekModal() { document.getElementById("archiveWeekLabel").value = "Week of " + new Date().toLocaleDateString("en-US",{month:"short",day:"numeric"}); document.getElementById("archiveModal").classList.add("open"); }
 function confirmArchiveWeek() {
-const label = document.getElementById("archiveWeekLabel").value.trim() || "Archived Week";
-const trimester = document.getElementById("archiveTrimester").value;
-const dateStr = new Date().toLocaleDateString("en-US");
-const records = [];
-Object.keys(state.rosters).forEach(function(p) {
-state.rosters[p].students.forEach(function(s) {
-const rec = getStudentWeekRecord(p, s.id);
-const score = getStudentWeeklyScore(p, s.id);
-if (rec.deductions.length || rec.minga.length || score < 50) {
-records.push({ period: p, student: s.name, id: s.id, score: score, deductions: rec.deductions, minga: rec.minga });
-}
-});
-});
-state.archive.unshift({ label: label, trimester: trimester, date: dateStr, records: records });
-state.weeklyData = {};
-saveState();
-closeModal("archiveModal");
-refreshAll();
-alert("Week archived! All students reset to 50/50 for the new week.");
+  const lbl = document.getElementById("archiveWeekLabel").value.trim() || "Archived Week", tri = document.getElementById("archiveTrimester").value, dt = new Date().toLocaleDateString("en-US"), recs = [];
+  Object.keys(state.rosters).forEach(function(p){ state.rosters[p].students.forEach(function(s){ const r = getStudentWeekRecord(p, s.id), sc = getStudentWeeklyScore(p, s.id); if (r.deductions.length || r.minga.length || sc < 50) recs.push({period:p,student:s.name,id:s.id,score:sc,deductions:r.deductions,minga:r.minga}); }); });
+  state.archive.unshift({ label:lbl, trimester:tri, date:dt, records:recs }); state.weeklyData = {}; saveState(); closeModal("archiveModal"); refreshAll(); alert("Week archived & reset to 50/50!");
 }
 function renderArchive() {
-const tri = document.getElementById("archiveTriFilter").value;
-const q = document.getElementById("archiveSearch").value.toLowerCase();
-const filtered = state.archive.filter(function(a) {
-return (tri === "ALL" || a.trimester === tri) &&
-(a.label.toLowerCase().includes(q) || a.date.includes(q) || a.records.some(function(r) { return r.student.toLowerCase().includes(q); }));
-});
-const html = filtered.map(function(a) {
-const recHtml = a.records
-.filter(function(r) { return !q || r.student.toLowerCase().includes(q) || a.label.toLowerCase().includes(q); })
-.map(function(r) {
-const dStr = r.deductions.map(function(d) { return "[-" + d.pts + " " + d.reason + ": " + d.notes + "]"; }).join(" ");
-const mStr = r.minga.map(function(m) { return "[Minga " + (m.type === "pos" ? "✔" : "🚩") + ": " + m.notes + "]"; }).join(" ");
-return 'Pr.' + r.period + ' ' + r.student + ' (' + r.score + '/50): ' + dStr + ' ' + mStr + '';
-}).join("") || "All students earned 50/50.";
-return '' +
-'' + a.label + ' • ' + a.trimester + ' (' + a.date + ')' +
-'' + recHtml + '' +
-'';
-}).join("");
-document.getElementById("archiveList").innerHTML = html || 'No archived weeks matching filter.';
+  const tri = document.getElementById("archiveTriFilter").value, q = document.getElementById("archiveSearch").value.toLowerCase();
+  const filt = state.archive.filter(function(a){ return (tri==="ALL"||a.trimester===tri) && (a.label.toLowerCase().includes(q)||a.date.includes(q)||a.records.some(function(r){return r.student.toLowerCase().includes(q);})); });
+  document.getElementById("archiveList").innerHTML = filt.map(function(a){
+    const rHtml = a.records.filter(function(r){return !q||r.student.toLowerCase().includes(q)||a.label.toLowerCase().includes(q);}).map(function(r){ return '<div style="padding:4px 0;border-top:1px dashed var(--jets-silver);"><b>Pr.' + r.period + ' ' + r.student + '</b> (' + r.score + '/50): ' + r.deductions.map(function(d){return '[-'+d.pts+' '+d.reason+': '+d.notes+']';}).join(" ") + ' ' + r.minga.map(function(m){return '[Minga '+(m.type==='pos'?'✔':'🚩')+': '+m.notes+']';}).join(" ") + '</div>'; }).join("") || "All students earned 50/50.";
+    return '<div style="border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:8px;background:var(--jets-sky-light);"><strong>' + a.label + '</strong> • <span style="color:var(--jets-blue);font-weight:700;">' + a.trimester + '</span> (' + a.date + ')<div style="font-size:0.78rem;margin-top:6px;">' + rHtml + '</div></div>';
+  }).join("") || '<p style="font-size:0.8rem;color:var(--muted);">No archived weeks matching filter.</p>';
 }
-function exportFullBackup() {
-downloadFile(JSON.stringify(state, null, 2), "Northlake_PE_Backup_" + new Date().toISOString().slice(0,10) + ".json", "application/json");
-}
-function importFullBackup(e) {
-const file = e.target.files.item(0);
-if (!file) return;
-const reader = new FileReader();
-reader.onload = function(ev) {
-try {
-state = JSON.parse(ev.target.result);
-saveState();
-applyLogo();
-refreshAll();
-alert("Backup restored successfully!");
-} catch (err) {
-alert("Invalid backup file.");
-}
-};
-reader.readAsText(file);
-}
+function exportFullBackup() { downloadFile(JSON.stringify(state, null, 2), "Northlake_PE_Backup_" + new Date().toISOString().slice(0,10) + ".json", "application/json"); }
+function importFullBackup(e) { const f = e.target.files.item(0); if (!f) return; const r = new FileReader(); r.onload = function(ev){ try { state = JSON.parse(ev.target.result); saveState(); applyLogo(); refreshAll(); alert("Restored!"); } catch(err){ alert("Invalid file."); } }; r.readAsText(f); }
 function handleAeriesCSV(e) {
-const file = e.target.files.item(0);
-if (!file) return;
-const reader = new FileReader();
-reader.onload = function(ev) {
-const lines = ev.target.result.split(/\r?\n/);
-let curP = null;
-lines.forEach(function(line) {
-const pMatch = line.match(/^Per(\d)\s+([^,]+),,,,,([^,]+)/);
-if (pMatch) {
-curP = pMatch.at(1);
-if (!state.rosters[curP]) state.rosters[curP] = { name: "Period " + curP, course: pMatch.at(3), time: pMatch.at(2), students: [] };
-else state.rosters[curP].students = [];
+  const f = e.target.files.item(0); if (!f) return; const r = new FileReader();
+  r.onload = function(ev) {
+    let curP = null;
+    ev.target.result.split(/\r?\n/).forEach(function(line) {
+      const pm = line.match(/^Per(\d)\s+([^,]+),,,,,([^,]+)/);
+      if (pm) { curP = pm.at(1); if (!state.rosters[curP]) state.rosters[curP] = { name:"Period "+curP, course:pm.at(3), time:pm.at(2), students:[] }; else state.rosters[curP].students = []; }
+      const sm = line.match(/^(\d{2}),(\d{6,}),,,"([^"]+)",,,,,,(\d+)/);
+      if (sm && curP) state.rosters[curP].students.push({ num:sm.at(1), id:sm.at(2), name:sm.at(3).replace(/^\*/,""), gr:sm.at(4) });
+    });
+    saveState(); refreshAll(); alert("Aeries CSV updated!");
+  };
+  r.readAsText(f);
 }
-const sMatch = line.match(/^(\d{2}),(\d{6,}),,,"([^"]+)",,,,,,(\d+)/);
-if (sMatch && curP) {
-state.rosters[curP].students.push({ num: sMatch.at(1), id: sMatch.at(2), name: sMatch.at(3).replace(/^*/, ""), gr: sMatch.at(4) });
-}
-});
-saveState();
-refreshAll();
-alert("Aeries CSV rosters updated!");
-};
-reader.readAsText(file);
-}
-function downloadFile(content, filename, mime) {
-const a = document.createElement("a");
-a.href = URL.createObjectURL(new Blob([content], { type: mime }));
-a.download = filename;
-a.click();
-}
-function refreshAll() {
-renderHome();
-renderPointsList();
-renderRunnerGrid();
-renderFitness();
-renderRubricGrading();
-renderLockers();
-renderArchive();
-renderSnapshots();
-}
-applyLogo();
-updateClock();
-runDailyAutoBackup();
-refreshAll();
-
-
-
-### Quick Check Before Clicking "Commit changes" on GitHub
-Scroll down to the very bottom of the GitHub editor box after pasting to make sure the last three lines are:
-```html
+function downloadFile(content, filename, mime) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([content], {type:mime})); a.download = filename; a.click(); }
+function refreshAll() { renderHome(); renderPointsList(); renderRunnerGrid(); renderFitness(); renderRubricGrading(); renderLockers(); renderArchive(); renderSnapshots(); }
+applyLogo(); updateClock(); runDailyAutoBackup(); refreshAll();
 </script>
 </body>
 </html>
