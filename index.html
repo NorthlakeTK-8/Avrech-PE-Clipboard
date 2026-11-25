@@ -190,7 +190,7 @@
 
 <div class="modal-backdrop" id="deductModal"><div class="modal"><h3 id="deductModalTitle">Deduct Points</h3><div class="form-group"><label>Points to Deduct:</label><select id="deductAmount"><option value="2">-2 Pts</option><option value="5" selected>-5 Pts</option><option value="10">-10 Pts (Full Day)</option><option value="1">-1 Pt</option></select></div><div class="form-group"><label>Reason:</label><select id="deductReason"><option value="Non Suit">Non Suit</option><option value="Behavior">Behavior</option><option value="Tardy">Tardy</option><option value="Non-Participation">Non-Participation</option><option value="Other">Other</option></select></div><div class="form-group"><label>Notes:</label><textarea id="deductNotes" rows="3"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('deductModal')">Cancel</button><button class="btn btn-red" onclick="submitDeduction()">Save</button></div></div></div>
 <div class="modal-backdrop" id="mingaModal"><div class="modal"><h3 id="mingaModalTitle">Minga Note</h3><div class="form-group"><label>Notes:</label><textarea id="mingaNotes" rows="3"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('mingaModal')">Cancel</button><button class="btn btn-primary" onclick="submitMinga()">Save</button></div></div></div>
-```html
+
 <script>
 const DEFAULT_ROSTERS = {
   "2": { name: "Period 2", course: "PE 8", time: "9:07AM-10:05AM", students: [
