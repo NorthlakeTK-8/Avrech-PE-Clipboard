@@ -180,7 +180,7 @@
 
 <nav>
   <button class="active" onclick="switchTab('home', this)"><span class="icon">✈️</span>Home</button>
-  <button onclick="switchTab('points', this)"><span class="icon">✅</span>Points</button>
+  <button onclick="switchTab('points', this)"><span class="icon">✅</span>Attendance</button>
   <button onclick="switchTab('timer', this)"><span class="icon">⏱️</span>Timer</button>
   <button onclick="switchTab('teams', this)"><span class="icon">🎲</span>Teams</button>
   <button onclick="switchTab('fitness', this)"><span class="icon">💪</span>Fitness</button>
@@ -189,7 +189,21 @@
 </nav>
 
 <div class="modal-backdrop" id="deductModal"><div class="modal"><h3 id="deductModalTitle">Deduct Points</h3><div class="form-group"><label>Points to Deduct:</label><select id="deductAmount"><option value="2">-2 Pts</option><option value="5" selected>-5 Pts</option><option value="10">-10 Pts (Full Day)</option><option value="1">-1 Pt</option></select></div><div class="form-group"><label>Reason:</label><select id="deductReason"><option value="Non Suit">Non Suit</option><option value="Behavior">Behavior</option><option value="Tardy">Tardy</option><option value="Non-Participation">Non-Participation</option><option value="Other">Other</option></select></div><div class="form-group"><label>Notes:</label><textarea id="deductNotes" rows="3"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('deductModal')">Cancel</button><button class="btn btn-red" onclick="submitDeduction()">Save</button></div></div></div>
-<div class="modal-backdrop" id="mingaModal"><div class="modal"><h3 id="mingaModalTitle">Minga Note</h3><div class="form-group"><label>Notes:</label><textarea id="mingaNotes" rows="3"></textarea></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('mingaModal')">Cancel</button><button class="btn btn-primary" onclick="submitMinga()">Save</button></div></div></div>
+<div class="modal-backdrop" id="mingaModal">
+  <div class="modal">
+    <h3 id="mingaModalTitle">Minga Note</h3>
+    <div class="form-group">
+      <label style="font-size:0.75rem;font-weight:700;color:var(--jets-silver);display:block;margin-bottom:6px;">Quick-Select Reason:</label>
+      <div id="mingaCannedChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;"></div>
+      <label>Additional Notes:</label>
+      <textarea id="mingaNotes" rows="3" placeholder="Tap a tag above or type custom note..."></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('mingaModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitMinga()">Save</button>
+    </div>
+  </div>
+</div>
 
 <script>
 const DEFAULT_ROSTERS = {
@@ -307,31 +321,187 @@ function renderHome() {
     return '<button class="period-card ' + (p===state.activePeriod?'selected':'') + '"' + dimStyle + ' onclick="selectPeriod(\'' + p + '\')"><div class="p-title">' + r.name + ' • ' + r.course + '</div><div class="p-meta">' + r.students.length + ' Students • ' + displayTime + '</div></button>';
   }).join("");
 }
+const CANNED_FLAGS = {
+  pos: ["Prepared for class", "Beat PR", "Helpful", "On-task"],
+  neg: ["Non Suit", "Non Participant", "Behavior", "Technology Violation"]
+};
+const WEEKDAYS_MF = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+
+function getTodayWeekdayMF() {
+  const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][new Date().getDay()];
+  return WEEKDAYS_MF.includes(day) ? day : "Mon";
+}
+
+function getStudentWeekRecord(p, sid) {
+  if (!state.weeklyData[p]) state.weeklyData[p] = {};
+  if (!state.weeklyData[p][sid]) state.weeklyData[p][sid] = { absent: false, days: {}, deductions: [], minga: [] };
+  if (!state.weeklyData[p][sid].days) state.weeklyData[p][sid].days = {};
+  return state.weeklyData[p][sid];
+}
 
 function renderPointsList() {
   const p = state.activePeriod, r = state.rosters[p], q = document.getElementById("studentSearch").value.toLowerCase();
-  document.getElementById("pointsHeaderTitle").textContent = r.name + " (" + r.course + ") • Weekly Points (/50)";
+  const today = getTodayWeekdayMF();
+  document.getElementById("pointsHeaderTitle").textContent = r.name + " (" + r.course + ") • Attendance & Points (/50)";
   document.getElementById("pointsStudentList").innerHTML = r.students.filter(function(s){ return s.name.toLowerCase().includes(q) || s.num.includes(q); }).map(function(s) {
     const rec = getStudentWeekRecord(p, s.id), score = getStudentWeeklyScore(p, s.id);
+    const isAbsentToday = rec.days[today] === "Absent" || (rec.absent && !rec.days[today]);
+    const isTardyToday = rec.days[today] === "Tardy";
     const pos = rec.minga.filter(function(m){return m.type==="pos";}).length, neg = rec.minga.filter(function(m){return m.type==="neg";}).length;
-    return '<div class="student-row" style="' + (rec.absent?'opacity:0.55;':'') + '"><div class="s-info" onclick="openSynopsis(\'' + s.id + '\')"><span class="s-num">#' + s.num + '</span><span class="s-name">' + s.name + '</span><div class="s-badges"><span>ID: ' + s.id + '</span>' + (rec.deductions.length?'<span style="color:var(--red);font-weight:700;">• '+rec.deductions.length+' ded</span>':'') + (pos?'<span style="color:var(--green);font-weight:700;">• ✔ '+pos+'</span>':'') + (neg?'<span style="color:var(--red);font-weight:700;">• 🚩 '+neg+'</span>':'') + '</div></div><div class="s-actions"><button class="btn btn-sm ' + (rec.absent?'btn-red':'btn-outline') + '" onclick="toggleAbsent(\'' + s.id + '\')">' + (rec.absent?'Absent':'Present') + '</button><button class="btn btn-sm btn-green" onclick="openMingaModal(\'' + s.id + '\',\'pos\')">✔</button><button class="btn btn-sm btn-red" onclick="openMingaModal(\'' + s.id + '\',\'neg\')">🚩</button><button class="btn btn-sm btn-amber" onclick="openDeductModal(\'' + s.id + '\')">- Pts</button><div class="score-pill ' + (score<40?'low':'') + '">' + score + '/50</div></div></div>';
+    const absCount = WEEKDAYS_MF.filter(function(d){ return rec.days[d] === "Absent"; }).length;
+    const tardyCount = WEEKDAYS_MF.filter(function(d){ return rec.days[d] === "Tardy"; }).length;
+
+    return '<div class="student-row" style="' + (isAbsentToday?'opacity:0.55;':'') + '">' +
+      '<div class="s-info" onclick="openSynopsis(\'' + s.id + '\')">' +
+        '<span class="s-num">#' + s.num + '</span><span class="s-name">' + s.name + '</span>' +
+        '<div class="s-badges">' +
+          '<span>ID: ' + s.id + '</span>' +
+          (absCount ? '<span style="color:var(--red);font-weight:700;">• ' + absCount + ' Abs</span>' : '') +
+          (tardyCount ? '<span style="color:var(--amber);font-weight:700;">• ' + tardyCount + ' Tardy</span>' : '') +
+          (rec.deductions.length ? '<span style="color:var(--red);font-weight:700;">• ' + rec.deductions.length + ' ded</span>' : '') +
+          (pos ? '<span style="color:var(--green);font-weight:700;">• ✔ ' + pos + '</span>' : '') +
+          (neg ? '<span style="color:var(--red);font-weight:700;">• 🚩 ' + neg + '</span>' : '') +
+        '</div>' +
+      '</div>' +
+      '<div class="s-actions">' +
+        '<button class="btn btn-sm ' + (isAbsentToday ? 'btn-red' : (isTardyToday ? 'btn-amber' : 'btn-outline')) + '" onclick="toggleAbsent(\'' + s.id + '\')">' + (isAbsentToday ? 'Absent' : (isTardyToday ? 'Tardy' : 'Present')) + '</button>' +
+        '<button class="btn btn-sm btn-green" onclick="openMingaModal(\'' + s.id + '\',\'pos\')">✔</button>' +
+        '<button class="btn btn-sm btn-red" onclick="openMingaModal(\'' + s.id + '\',\'neg\')">🚩</button>' +
+        '<button class="btn btn-sm btn-amber" onclick="openDeductModal(\'' + s.id + '\')">- Pts</button>' +
+        '<div class="score-pill ' + (score<40?'low':'') + '">' + score + '/50</div>' +
+      '</div>' +
+    '</div>';
   }).join("");
 }
 
-function toggleAbsent(sid) { const r = getStudentWeekRecord(state.activePeriod, sid); r.absent = !r.absent; saveState(); renderPointsList(); }
-function openDeductModal(sid) { modalTargetStudent = sid; const s = state.rosters[state.activePeriod].students.find(function(x){return x.id===sid;}); document.getElementById("deductModalTitle").textContent = "Deduct Points: " + s.name; document.getElementById("deductNotes").value = ""; document.getElementById("deductModal").classList.add("open"); }
-function submitDeduction() { getStudentWeekRecord(state.activePeriod, modalTargetStudent).deductions.push({ date: new Date().toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"}), pts: Number(document.getElementById("deductAmount").value), reason: document.getElementById("deductReason").value, notes: document.getElementById("deductNotes").value.trim() }); saveState(); closeModal("deductModal"); renderPointsList(); }
-function openMingaModal(sid, type) { modalTargetStudent = sid; modalMingaType = type; const s = state.rosters[state.activePeriod].students.find(function(x){return x.id===sid;}); document.getElementById("mingaModalTitle").textContent = (type==="pos"?"✔ Positive Minga: ":"🚩 Negative Minga: ") + s.name; document.getElementById("mingaNotes").value = ""; document.getElementById("mingaModal").classList.add("open"); }
-function submitMinga() { getStudentWeekRecord(state.activePeriod, modalTargetStudent).minga.push({ date: new Date().toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"}), type: modalMingaType, notes: document.getElementById("mingaNotes").value.trim() || (modalMingaType==="pos"?"Positive PBIS":"Behavior / Tardy") }); saveState(); closeModal("mingaModal"); renderPointsList(); }
-function openSynopsis(sid) {
-  const p = state.activePeriod, s = state.rosters[p].students.find(function(x){return x.id===sid;}), rec = getStudentWeekRecord(p, sid), score = getStudentWeeklyScore(p, sid), pr = state.prs[sid] || { mile:"—", pacer:0 };
-  let html = '<p><strong>ID:</strong> ' + s.id + ' • <strong>Weekly Score:</strong> ' + score + '/50</p><p><strong>PRs:</strong> Mile: <b>' + (pr.mile||"—") + '</b> | PACER: <b>' + (pr.pacer||0) + ' laps</b></p><h4>Deductions (' + rec.deductions.length + ')</h4>';
-  html += rec.deductions.length ? rec.deductions.map(function(d, idx){ return '<div style="background:#fef2f2;padding:8px;border-radius:8px;margin-bottom:6px;font-size:0.82rem;"><b>-' + d.pts + ' pts • ' + d.reason + '</b> (' + d.date + ')<br>' + (d.notes||'') + '<button class="btn btn-sm btn-outline" style="float:right;" onclick="removeDeduction(\'' + sid + '\',' + idx + ')">Undo</button></div>'; }).join("") : '<p style="font-size:0.82rem;color:var(--muted);">None.</p>';
-  html += '<h4>Minga Flags (' + rec.minga.length + ')</h4>';
-  html += rec.minga.length ? rec.minga.map(function(m){ return '<div style="background:' + (m.type==='pos'?'#f0fdf4':'#fef2f2') + ';padding:8px;border-radius:8px;margin-bottom:6px;font-size:0.82rem;"><b>' + (m.type==='pos'?'✔ Pos':'🚩 Neg') + '</b> (' + m.date + '): ' + m.notes + '</div>'; }).join("") : '<p style="font-size:0.82rem;color:var(--muted);">None.</p>';
-  document.getElementById("synopsisTitle").textContent = "#" + s.num + " " + s.name; document.getElementById("synopsisBody").innerHTML = html; document.getElementById("synopsisModal").classList.add("open");
+function toggleAbsent(sid) {
+  const r = getStudentWeekRecord(state.activePeriod, sid);
+  const today = getTodayWeekdayMF();
+  const currentlyAbsent = r.days[today] === "Absent" || (r.absent && !r.days[today]);
+  if (currentlyAbsent) {
+    r.absent = false;
+    delete r.days[today];
+  } else {
+    r.absent = true;
+    r.days[today] = "Absent";
+  }
+  saveState();
+  renderPointsList();
 }
-function removeDeduction(sid, idx) { getStudentWeekRecord(state.activePeriod, sid).deductions.splice(idx, 1); saveState(); openSynopsis(sid); renderPointsList(); }
+
+function cycleDayAttendance(sid, day) {
+  const r = getStudentWeekRecord(state.activePeriod, sid);
+  const cur = r.days[day] || "Present";
+  const next = cur === "Present" ? "Absent" : (cur === "Absent" ? "Tardy" : "Present");
+  if (next === "Present") delete r.days[day];
+  else r.days[day] = next;
+  if (day === getTodayWeekdayMF()) r.absent = (next === "Absent");
+  saveState();
+  openSynopsis(sid);
+  renderPointsList();
+}
+
+function openDeductModal(sid) {
+  modalTargetStudent = sid;
+  const s = state.rosters[state.activePeriod].students.find(function(x){return x.id===sid;});
+  document.getElementById("deductModalTitle").textContent = "Deduct Points: " + s.name;
+  document.getElementById("deductNotes").value = "";
+  document.getElementById("deductModal").classList.add("open");
+}
+
+function submitDeduction() {
+  const rec = getStudentWeekRecord(state.activePeriod, modalTargetStudent);
+  const reason = document.getElementById("deductReason").value;
+  rec.deductions.push({
+    date: new Date().toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"}),
+    pts: Number(document.getElementById("deductAmount").value),
+    reason: reason,
+    notes: document.getElementById("deductNotes").value.trim()
+  });
+  if (reason === "Tardy") {
+    rec.days[getTodayWeekdayMF()] = "Tardy";
+  }
+  saveState();
+  closeModal("deductModal");
+  renderPointsList();
+}
+
+function selectCannedChip(btn, text) {
+  const box = document.getElementById("mingaNotes");
+  const isSelected = btn.dataset.selected === "1";
+  if (isSelected) {
+    btn.dataset.selected = "0";
+    btn.style.background = "#fff";
+    btn.style.color = "var(--jets-navy)";
+    box.value = box.value.split(", ").filter(function(item){ return item !== text; }).join(", ");
+  } else {
+    btn.dataset.selected = "1";
+    btn.style.background = modalMingaType === "pos" ? "var(--green)" : "var(--red)";
+    btn.style.color = "#fff";
+    box.value = box.value.trim() ? box.value.trim() + ", " + text : text;
+  }
+}
+
+function openMingaModal(sid, type) {
+  modalTargetStudent = sid;
+  modalMingaType = type;
+  const s = state.rosters[state.activePeriod].students.find(function(x){return x.id===sid;});
+  document.getElementById("mingaModalTitle").textContent = (type==="pos" ? "✔ Positive Flag: " : "🚩 Red Flag: ") + s.name;
+  document.getElementById("mingaNotes").value = "";
+  const borderCol = type === "pos" ? "var(--green)" : "var(--red)";
+  document.getElementById("mingaCannedChips").innerHTML = CANNED_FLAGS[type].map(function(label) {
+    return '<button type="button" data-selected="0" onclick="selectCannedChip(this, \'' + label + '\')" style="border:1.5px solid ' + borderCol + ';background:#fff;color:var(--jets-navy);border-radius:16px;padding:5px 10px;font-size:0.78rem;font-weight:700;cursor:pointer;">' + label + '</button>';
+  }).join("");
+  document.getElementById("mingaModal").classList.add("open");
+}
+
+function submitMinga() {
+  getStudentWeekRecord(state.activePeriod, modalTargetStudent).minga.push({
+    date: new Date().toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"}),
+    type: modalMingaType,
+    notes: document.getElementById("mingaNotes").value.trim() || (modalMingaType==="pos" ? "Positive PBIS" : "Red Flag")
+  });
+  saveState();
+  closeModal("mingaModal");
+  renderPointsList();
+}
+
+function openSynopsis(sid) {
+  const p = state.activePeriod;
+  const s = state.rosters[p].students.find(function(x){return x.id===sid;});
+  const rec = getStudentWeekRecord(p, sid);
+  const score = getStudentWeeklyScore(p, sid);
+  const pr = state.prs[sid] || { mile:"—", pacer:0 };
+
+  const absentDays = WEEKDAYS_MF.filter(function(d){ return rec.days[d] === "Absent"; });
+  const tardyDays = WEEKDAYS_MF.filter(function(d){ return rec.days[d] === "Tardy"; });
+  const posList = rec.minga.map(function(m, idx){ return Object.assign({}, m, { origIdx: idx }); }).filter(function(m){ return m.type === "pos"; });
+  const negList = rec.minga.map(function(m, idx){ return Object.assign({}, m, { origIdx: idx }); }).filter(function(m){ return m.type === "neg"; });
+
+  let html = '<p style="margin:0 0 6px;"><strong>ID:</strong> ' + s.id + ' • <strong>Weekly Score:</strong> ' + score + '/50</p>';
+  html += '<p style="margin:0 0 10px;font-size:0.82rem;"><strong>PRs:</strong> Mile: <b>' + (pr.mile||"—") + '</b> | PACER: <b>' + (pr.pacer||0) + ' laps</b></p>';
+
+  html += '<h4 style="margin:10px 0 6px;">M–F Attendance <span style="font-size:0.72rem;font-weight:500;color:var(--muted);">(tap day to change)</span></h4>';
+  html += '<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:8px;">';
+  WEEKDAYS_MF.forEach(function(day) {
+    const status = rec.days[day] || "Present";
+    const bg = status === "Absent" ? "#fee2e2" : (status === "Tardy" ? "#fef3c7" : "#dcfce7");
+    const col = status === "Absent" ? "#991b1b" : (status === "Tardy" ? "#92400e" : "#166534");
+    html += '<button type="button" onclick="cycleDayAttendance(\'' + sid + '\',\'' + day + '\')" style="background:' + bg + ';color:' + col + ';border:1px solid ' + col + ';border-radius:8px;padding:6px 2px;text-align:center;cursor:pointer;">' +
+      '<div style="font-weight:800;font-size:0.78rem;">' + day + '</div>' +
+      '<div style="font-size:0.68rem;font-weight:700;margin-top:2px;">' + status + '</div>' +
+    '</button>';
+  });
+  html += '</div>';
+  html += '<div style="font-size:0.78rem;margin-bottom:10px;color:var(--jets-navy);">' +
+    '<strong>Days Absent:</strong> ' + (absentDays.length ? absentDays.join(", ") : "None") + ' &nbsp;|&nbsp; ' +
+    '<strong>Days Tardy:</strong> ' + (tardyDays.length ? tardyDays.join(", ") : "None") +
+  '</div>';
+
+  html += '<h4 style="margin:10px 0 6px;color:var(--green);">✔ Positive Interactions (' + posList.length + ')</h4>';
+  html += posList.length ? posList.map(function(m){
+    return '<div style="background:#f0fdf4;border-left:3px solid var(--green);padding:8px;border-radius:8px;margin-bottom:6px;font-size:0.82rem;display:flex;justify-content:space-between;align-items:center;gap:6px;">' +
+
 function closeModal(id) { document.getElementById(id).classList.remove("open"); }
 function copyScoresForAeries() { const p = state.activePeriod; navigator.clipboard.writeText(state.rosters[p].students.map(function(s){return getStudentWeeklyScore(p, s.id);}).join("\n")); alert("Copied scores in Aeries order!"); }
 function exportAeriesScoresCSV() { const p = state.activePeriod; let csv = "Student ID,Student Name,Weekly Score\n"; state.rosters[p].students.forEach(function(s){ csv += s.id + ',"' + s.name + '",' + getStudentWeeklyScore(p, s.id) + '\n'; }); downloadFile(csv, "Aeries_Grades_Per" + p + ".csv", "text/csv"); }
