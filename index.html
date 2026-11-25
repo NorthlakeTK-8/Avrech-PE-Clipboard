@@ -501,6 +501,45 @@ function openSynopsis(sid) {
   html += '<h4 style="margin:10px 0 6px;color:var(--green);">✔ Positive Interactions (' + posList.length + ')</h4>';
   html += posList.length ? posList.map(function(m){
     return '<div style="background:#f0fdf4;border-left:3px solid var(--green);padding:8px;border-radius:8px;margin-bottom:6px;font-size:0.82rem;display:flex;justify-content:space-between;align-items:center;gap:6px;">' +
+      '<div><b>' + m.date + ':</b> ' + m.notes + '</div>' +
+      '<button class="btn btn-sm btn-outline" onclick="removeMinga(\'' + sid + '\',' + m.origIdx + ')">Undo</button>' +
+    '</div>';
+  }).join("") : '<p style="font-size:0.8rem;color:var(--muted);margin:0 0 8px;">No positive interactions logged this week.</p>';
+
+  html += '<h4 style="margin:10px 0 6px;color:var(--red);">🚩 Negative Interactions (' + negList.length + ')</h4>';
+  html += negList.length ? negList.map(function(m){
+    return '<div style="background:#fef2f2;border-left:3px solid var(--red);padding:8px;border-radius:8px;margin-bottom:6px;font-size:0.82rem;display:flex;justify-content:space-between;align-items:center;gap:6px;">' +
+      '<div><b>' + m.date + ':</b> ' + m.notes + '</div>' +
+      '<button class="btn btn-sm btn-outline" onclick="removeMinga(\'' + sid + '\',' + m.origIdx + ')">Undo</button>' +
+    '</div>';
+  }).join("") : '<p style="font-size:0.8rem;color:var(--muted);margin:0 0 8px;">No negative interactions logged this week.</p>';
+
+  html += '<h4 style="margin:10px 0 6px;">Point Deductions (' + rec.deductions.length + ')</h4>';
+  html += rec.deductions.length ? rec.deductions.map(function(d, idx){
+    return '<div style="background:#fffbeb;border-left:3px solid var(--amber);padding:8px;border-radius:8px;margin-bottom:6px;font-size:0.82rem;display:flex;justify-content:space-between;align-items:center;gap:6px;">' +
+      '<div><b>-' + d.pts + ' pts • ' + d.reason + '</b> (' + d.date + ')' + (d.notes ? '<br>' + d.notes : '') + '</div>' +
+      '<button class="btn btn-sm btn-outline" onclick="removeDeduction(\'' + sid + '\',' + idx + ')">Undo</button>' +
+    '</div>';
+  }).join("") : '<p style="font-size:0.8rem;color:var(--muted);margin:0;">None.</p>';
+
+  document.getElementById("synopsisTitle").textContent = "#" + s.num + " " + s.name;
+  document.getElementById("synopsisBody").innerHTML = html;
+  document.getElementById("synopsisModal").classList.add("open");
+}
+
+function removeMinga(sid, idx) {
+  getStudentWeekRecord(state.activePeriod, sid).minga.splice(idx, 1);
+  saveState();
+  openSynopsis(sid);
+  renderPointsList();
+}
+
+function removeDeduction(sid, idx) {
+  getStudentWeekRecord(state.activePeriod, sid).deductions.splice(idx, 1);
+  saveState();
+  openSynopsis(sid);
+  renderPointsList();
+}
 
 function closeModal(id) { document.getElementById(id).classList.remove("open"); }
 function copyScoresForAeries() { const p = state.activePeriod; navigator.clipboard.writeText(state.rosters[p].students.map(function(s){return getStudentWeeklyScore(p, s.id);}).join("\n")); alert("Copied scores in Aeries order!"); }
